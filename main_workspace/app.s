@@ -24,7 +24,7 @@ main:
 
 	mov x11, Q_LINE // Cantidad de renglones con el mismo color
 	mov x9, SKYE_COLOR_I // Seteo variable de color
-	mov x12, 2 //	
+	mov x12, 2 // Contador para mitad de la imagen
 	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
 
 loop1:
@@ -40,8 +40,8 @@ loop0:
 	/*Degrades*/
 	cmp x12,2
 	b.ne decrement_y
-	sub x11,x11,1 
 	cbnz x11, decrement_y // Compara si termino de pintar el bloque del mismo color
+	sub x11,x11,1 
 	add x9, x10, INCREMENT_COLOR // Calcular nuevo color
 	mov x10, x9 // Seteo de nuevo color
 	mov x11,Q_LINE // Reinicio de contador de renglones
@@ -51,14 +51,14 @@ loop0:
 	cbnz x2,loop1	   // if not last row, jump
 	/*Termina de pintar el cielo*/
 	
-	sub x12, x12, 1
-	cmp x12, 1
+	sub x12, x12, 1 // Primera mitad pintada 
+	cmp x12, 1 
 	b.ne InfLoop
-	mov x2, HALF_SCREEN_HEIGH
+
+	mov x2, HALF_SCREEN_HEIGH // Pinte segunda mitad
 	
-	movz x10, BASE_COLOR, lsl 16
-	movk x10, SEA_COLOR_l, lsl 00
-	
+	movz x10, BASE_COLOR, lsl 16 // Seteo color del mar
+	movk x10, SEA_COLOR_l, lsl 00 // Seteo color del mar
 	b loop1
 
 //---------------------------------------------------------------
