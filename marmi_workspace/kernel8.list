@@ -16479,8 +16479,8 @@ Disassembly of section .text:
   1100f4:	b5ffffa1 	cbnz	x1, 1100e8 <loop0>
   1100f8:	f100099f 	cmp	x12, #0x2
   1100fc:	540000c1 	b.ne	110114 <decrement_y>  // b.any
-  110100:	d100056b 	sub	x11, x11, #0x1
-  110104:	b500008b 	cbnz	x11, 110114 <decrement_y>
+  110100:	b50000ab 	cbnz	x11, 110114 <decrement_y>
+  110104:	d100056b 	sub	x11, x11, #0x1
   110108:	91420149 	add	x9, x10, #0x80, lsl #12
   11010c:	aa0903ea 	mov	x10, x9
   110110:	d280014b 	mov	x11, #0xa                   	// #10
@@ -16546,8 +16546,8 @@ Disassembly of section .debug_line:
   90:	21232121 	.inst	0x21232121 ; undefined
   94:	21212121 	.inst	0x21212121 ; undefined
   98:	23212321 	.inst	0x23212321 ; undefined
-  9c:	22212121 	.inst	0x22212121 ; undefined
-  a0:	02252221 	.inst	0x02252221 ; undefined
+  9c:	22222121 	.inst	0x22222121 ; undefined
+  a0:	02252121 	.inst	0x02252121 ; undefined
   a4:	01010001 	.inst	0x01010001 ; undefined
 
 Disassembly of section .debug_info:
