@@ -10,11 +10,11 @@ main:
  	mov x20, x0	// Save framebuffer base address to x20	
 	//---------------- CODE HERE ------------------------------------
 	
-	movz x10, 0x50C7, lsl 16
+	movz x10, 0x2300, lsl 16
 	movk x10, 0x1585, lsl 00
 
-	movz x11, 0x0, lsl 16
-	movk x11, 0xff00, lsl 00
+	movz x11, 0x77, lsl 16
+	movk x11, 0x0, lsl 00
 
 	mov x2, SCREEN_HEIGH         // Y Size 
 loop1:
@@ -23,23 +23,137 @@ loop0:
 	stur w10,[x0]	   // Set color of pixel N
 	add x0,x0,4	   // Next pixel
 	sub x1,x1,1	   // decrement X counter
-	stur w10,[x0]	   // Set color of pixel N
-	add x0,x0,4	   // Next pixel
-	sub x1,x1,1
-	stur w11,[x0]
-	add x0,x0,4
-	sub x1,x1,1
-	stur w11,[x0]
+	stur w10,[x0]
 	add x0,x0,4
 	sub x1,x1,1
 	cbnz x1,loop0	   // If not end row jump
 	sub x2,x2,1	   // Decrement Y counter
 	cbnz x2,loop1	   // if not last row, jump
 	
-
+	bl make_boat
 
 	//---------------------------------------------------------------
 	// Infinite Loop 
 
 InfLoop: 
 	b InfLoop
+
+
+
+make_boat:
+
+	movz x12, 210
+	movz x13, 640
+	mul x12, x12, x13
+	add x12, x12, 320
+	lsl x12, x12, 2
+	add x12,x20,x12      // centro del barco
+
+
+	bl base							//hacer base del barco
+							
+	bl vela						//hacer la vela
+
+	br x30
+
+base : 
+	mov x4, x12	  		//centro del barco
+	sub x5, x4 ,400		//esquina izquierda del barco
+	add x7,x4, 400      //esquina derecha del barco
+	
+	mov x19, 10
+	nexttable:
+
+		add x5, x5 ,20
+		mov x6, 5
+	for:			   //pintar la tabla
+		add x5,x5,x16
+		mov x8, x5           		
+		add x7,x7,x16
+		sub x7,x7,4
+	aux:
+		stur w11,[x8]
+		add x8,x8,4
+		subs xzr,x7,x8
+		bne aux
+
+		mov x16,640
+		lsl x16,x16,2    //calc aux avanzar sig linea
+
+		sub x6, x6,1
+		cbnz x6 , for
+
+		sub x19,x19,1
+	cbnz x19,nexttable
+	
+	br x30
+
+
+vela: 
+
+	b mastil
+back:
+	b triang
+
+	br x30
+
+
+triang:
+	mov x21, x7 //centro
+	mov x19, x7
+	mov x22, 50 //altura triang
+	mov x8, 4 //incremento lados
+	b bucle 
+	
+
+bucle:
+	movz x13, 0xFFFF , lsl 00
+	movk x13, 0xFFFF , lsl 16
+
+	mov x16,640
+	lsl x16,x16,2 //calc aux
+	add x21,x21,x16
+	
+	mov x18,x21 //prox linea
+	mov x19,x21
+
+	add x19,x19,x8 //moverme der
+
+	add x8,x8,4 //incremento lados
+
+aux_2:
+
+	stur w13,[x18] // colorer
+	add x18,x18,4
+	subs xzr, x18,x19
+	bne aux_2 
+
+	sub x22,x22,1 //decremento altura triang
+	cbnz x22, bucle
+	br x30
+
+
+mastil:
+
+	mov x4, x12   		// esquina inf izquierda del bote
+	mov x5, 10
+	
+	mov x16,640
+	lsl x16,x16,2 
+		
+	top:
+		add x4,x4 ,4
+		mov x7,x4			
+		mov x6,75  			//largo del mastil 
+		follow:
+
+		stur w11,[x7]	
+		sub x7,x7,x16
+		sub x6,x6,1
+		cbnz x6, follow
+	
+		sub x5,x5,1
+	cbnz x5, top
+	add x7,x7,4
+
+	b back		// al final x7 debe guardar la esquina sup derecha +1 bit
