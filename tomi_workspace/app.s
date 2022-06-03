@@ -13,8 +13,8 @@ main:
 	movz x10, 0x2300, lsl 16
 	movk x10, 0x1585, lsl 00
 
-	movz x11, 0x77, lsl 16
-	movk x11, 0x0, lsl 00
+	movz x11, 0xFF8B, lsl 16
+	movk x11, 0x4513, lsl 00
 
 	mov x2, SCREEN_HEIGH         // Y Size 
 loop1:
@@ -58,34 +58,66 @@ make_boat:
 
 base : 
 	mov x4, x12	  		//centro del barco
-	sub x5, x4 ,400		//esquina izquierda del barco
-	add x7,x4, 400      //esquina derecha del barco
+	sub x5, x4 ,600		//esquina izquierda del barco
+	add x7,x4, 600      //esquina derecha del barco
 	
-	mov x19, 10
+	mov x19, 20
+	
+	mov x16,640
+	lsl x16,x16,2    //calc aux avanzar sig linea
+
+
+	mov x8, x5
+	mov x6, 1
+	lineas:
+		stur xzr,[x8]
+		add x8,x8,4
+		subs xzr,x8,x7
+		bne lineas
+
 	nexttable:
 
-		add x5, x5 ,20
-		mov x6, 5
+
+		add x5, x5 ,12
+		sub x7, x7, 12
+
+		mov x6, 3
+	first:
 	for:			   //pintar la tabla
+		
 		add x5,x5,x16
-		mov x8, x5           		
+		stur xzr,[x5]
+		mov x8, x5
+		add x8,x8,4
+		stur xzr,[x8]
+		add x8,x8,4	
 		add x7,x7,x16
-		sub x7,x7,4
+		mov x9,x7
+		stur xzr,[x9]
+		add x9,x9,4
+		stur xzr,[x9]
+		add x9,x9,4
 	aux:
 		stur w11,[x8]
 		add x8,x8,4
-		subs xzr,x7,x8
+		subs xzr,x9,x8
 		bne aux
 
-		mov x16,640
-		lsl x16,x16,2    //calc aux avanzar sig linea
-
+		
 		sub x6, x6,1
 		cbnz x6 , for
 
 		sub x19,x19,1
-	cbnz x19,nexttable
-	
+		cbnz x19,nexttable
+
+		add x5,x5,x16
+		add x7,x7,x16
+		lineas2:
+		stur xzr,[x5]
+		add x5,x5,4
+		subs xzr,x5,x7
+		bne lineas2
+
 	br x30
 
 
@@ -101,7 +133,7 @@ back:
 triang:
 	mov x21, x7 //centro
 	mov x19, x7
-	mov x22, 50 //altura triang
+	mov x22, 90 //altura triang
 	mov x8, 4 //incremento lados
 	b bucle 
 	
@@ -138,13 +170,13 @@ mastil:
 	mov x4, x12   		// esquina inf izquierda del bote
 	mov x5, 10
 	
-	mov x16,640
+	mov x16,6
 	lsl x16,x16,2 
 		
 	top:
 		add x4,x4 ,4
 		mov x7,x4			
-		mov x6,75  			//largo del mastil 
+		mov x6,150  			//largo del mastil 
 		follow:
 
 		stur w11,[x7]	
@@ -157,3 +189,4 @@ mastil:
 	add x7,x7,4
 
 	b back		// al final x7 debe guardar la esquina sup derecha +1 bit
+
