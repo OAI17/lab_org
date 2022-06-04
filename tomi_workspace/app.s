@@ -51,8 +51,18 @@ make_boat:
 
 
 	bl base							//hacer base del barco
-							
+
+	sub x13, x12, 300
+	mov x29, 150           // altura mastil
+	mov x28, 70				// "mitad" altura vela
 	bl vela						//hacer la vela
+retur_boat:
+
+	add x13, x12, 200
+	mov x29, 100           		// altura mastil
+	mov x28, 50					// "mitad" altura vela
+	bl vela						//hacer la vela
+
 
 	br x30
 
@@ -125,6 +135,7 @@ vela:
 
 	b mastil
 back:
+
 	b triang
 
 	br x30
@@ -133,9 +144,10 @@ back:
 triang:
 	mov x21, x7 //centro
 	mov x19, x7
-	mov x22, 90 //altura triang
+	mov x22, x28 //altura triang
 	mov x8, 4 //incremento lados
 	b bucle 
+	
 	
 
 bucle:
@@ -162,21 +174,42 @@ aux_2:
 
 	sub x22,x22,1 //decremento altura triang
 	cbnz x22, bucle
-	br x30
+	
+	sub x22, x28, 20 
+bucle2:
+	
+	add x21,x21,x16
+	mov x18,x21 //prox linea
+	mov x19,x21
+	add x19,x19,x8 //moverme der
+	sub x8,x8,4
+	
+
+aux_3:	
+	stur w13,[x18] // colorer
+	add x18,x18,4
+	subs xzr, x18,x19
+	bne aux_3 
+
+	sub x22,x22,1 //decremento altura triang
+	cbnz x22,bucle2 
+	
+	
+	b retur_boat
 
 
 mastil:
 
-	mov x4, x12   		// esquina inf izquierda del bote
+	mov x4, x13   		// esquina inf izquierda del bote
 	mov x5, 10
 	
-	mov x16,6
+	mov x16,640
 	lsl x16,x16,2 
 		
 	top:
 		add x4,x4 ,4
 		mov x7,x4			
-		mov x6,150  			//largo del mastil 
+		mov x6,x29  			//largo del mastil 
 		follow:
 
 		stur w11,[x7]	
