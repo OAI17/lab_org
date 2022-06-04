@@ -1,4 +1,3 @@
-
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
 .equ BITS_PER_PIXEL,  	32
@@ -12,9 +11,12 @@
 .equ BASE_COLOR, 0xFF00 // Color base
 .equ SEA_COLOR_l, 0x00FF // Color mar
 
+
+
 .globl main
 
 main:
+
 	// X0 contiene la direccion base del framebuffer
  	mov x20, x0	// Save framebuffer base address to x20	
 	//---------------- CODE HERE ------------------------------------
@@ -60,6 +62,13 @@ loop0:
 	movz x10, BASE_COLOR, lsl 16 // Seteo color del mar
 	movk x10, SEA_COLOR_l, lsl 00 // Seteo color del mar
 	b loop1
+
+
+
+
+.include "barco.s"
+b lop00
+
 
 //---------------------------------------------------------------
 // Infinite Loop 
