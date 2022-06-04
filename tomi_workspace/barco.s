@@ -29,7 +29,16 @@ loop0:
 	cbnz x1,loop0	   // If not end row jump
 	sub x2,x2,1	   // Decrement Y counter
 	cbnz x2,loop1	   // if not last row, jump
-	
+
+
+	movz x12, 160		// cordenada Y de 160 hasta 420
+	movz x13, 640		// cordenada X de 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 320	//
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+
 	bl make_boat
 
 	//---------------------------------------------------------------
@@ -41,13 +50,6 @@ InfLoop:
 
 
 make_boat:
-
-	movz x12, 210
-	movz x13, 640
-	mul x12, x12, x13
-	add x12, x12, 320
-	lsl x12, x12, 2
-	add x12,x20,x12      // centro del barco
 
 
 	bl base							//hacer base del barco
