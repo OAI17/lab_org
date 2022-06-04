@@ -16572,7 +16572,7 @@ Disassembly of section .debug_info:
   44:	013c0000 	.inst	0x013c0000 ; undefined
   48:	00000011 	.inst	0x00000011 ; undefined
   4c:	00380000 	.inst	0x00380000 ; NYI
-  50:	00080000 	.inst	0x00080000 ; undefined
+  50:	003e0000 	.inst	0x003e0000 ; NYI
   54:	002c0000 	.inst	0x002c0000 ; NYI
   58:	80010000 	.inst	0x80010000 ; undefined
 
@@ -16628,5 +16628,14 @@ Disassembly of section .debug_str:
   30:	32205341 	orr	w1, w26, #0x1fffff
   34:	0034332e 	.inst	0x0034332e ; NYI
   38:	2e707061 	uabdl	v1.4s, v3.4h, v16.4h
-  3c:	Address 0x000000000000003c is out of bounds.
-
+  3c:	682f0073 	.inst	0x682f0073 ; undefined
+  40:	2f656d6f 	.inst	0x2f656d6f ; undefined
+  44:	6d72616d 	ldp	d13, d24, [x11, #-224]
+  48:	61662f69 	.inst	0x61662f69 ; undefined
+  4c:	2f66616d 	umlsl	v13.4s, v11.4h, v6.h[2]
+  50:	5f62616c 	.inst	0x5f62616c ; undefined
+  54:	2f67726f 	fcmla	v15.4h, v19.4h, v7.h[1], #270
+  58:	6d72616d 	ldp	d13, d24, [x11, #-224]
+  5c:	6f775f69 	.inst	0x6f775f69 ; undefined
+  60:	70736b72 	adr	x18, e6dcf <FB_STRUCT_END+0x56d37>
+  64:	00656361 	.inst	0x00656361 ; undefined

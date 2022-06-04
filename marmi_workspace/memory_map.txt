@@ -67,7 +67,7 @@ LOAD linker stubs
  .debug_aranges
                 0x0000000000000030       0x30 app.o
 
-.debug_str      0x0000000000000000       0x3e
+.debug_str      0x0000000000000000       0x68
  .debug_str     0x0000000000000000       0x38 start.o
- .debug_str     0x0000000000000038        0x6 app.o
-                                         0x36 (size before relaxing)
+ .debug_str     0x0000000000000038       0x30 app.o
+                                         0x3c (size before relaxing)
