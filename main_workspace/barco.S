@@ -4,7 +4,7 @@
 .equ BITS_PER_PIXEL,  	32
 
 
-
+.globl make_boat
 
 ship_init:
 	// X0 contiene la direccion base del framebuffer
