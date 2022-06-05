@@ -31,7 +31,7 @@ loop0:
 	cbnz x2,loop1	   // if not last row, jump
 
 
-	movz x12, 160		// cordenada Y de 160 hasta 420
+	movz x12, 300		// cordenada Y de 160 hasta 420
 	movz x13, 640		// cordenada X de 
 	mul x12, x12, x13	// calcula el centro del barco
 	add x12, x12, 320	//
@@ -40,6 +40,17 @@ loop0:
 
 
 	bl make_boat
+
+	movz x12, 200		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 380	// cordenada X de
+	lsl x12, x12, 2		//  
+	add x12,x20,x12     // 
+
+
+	bl make_boat
+
 
 	//---------------------------------------------------------------
 	// Infinite Loop 
@@ -52,19 +63,21 @@ InfLoop:
 make_boat:
 
 
-	bl base							//hacer base del barco
+	b base							//hacer base del barco
+	endbase:
+
 
 	sub x13, x12, 300
 	mov x29, 150           // altura mastil
 	mov x28, 70				// "mitad" altura vela
-	bl vela						//hacer la vela
-retur_boat:
+	b velaM						//hacer la vela
+end_vela1:
 
 	add x13, x12, 200
 	mov x29, 100           		// altura mastil
 	mov x28, 50					// "mitad" altura vela
-	bl vela						//hacer la vela
-
+	b velasec						//hacer la vela
+end_vela2:
 
 	br x30
 
@@ -130,27 +143,18 @@ base :
 		subs xzr,x5,x7
 		bne lineas2
 
-	br x30
+	b endbase
 
 
-vela: 
+velaM: 
 
 	b mastil
 back:
 
-	b triang
-
-	br x30
-
-
-triang:
 	mov x21, x7 //centro
 	mov x19, x7
 	mov x22, x28 //altura triang
 	mov x8, 4 //incremento lados
-	b bucle 
-	
-	
 
 bucle:
 	movz x13, 0xFFFF , lsl 00
@@ -197,7 +201,7 @@ aux_3:
 	cbnz x22,bucle2 
 	
 	
-	b retur_boat
+	b end_vela1
 
 
 mastil:
@@ -224,4 +228,88 @@ mastil:
 	add x7,x7,4
 
 	b back		// al final x7 debe guardar la esquina sup derecha +1 bit
+
+
+velasec: 
+
+	b mastil2
+back2:
+
+	mov x21, x7 //centro
+	mov x19, x7
+	mov x22, x28 //altura triang
+	mov x8, 4 //incremento lados
+
+loopV:
+	movz x13, 0xFFFF , lsl 00
+	movk x13, 0xFFFF , lsl 16
+
+	mov x16,640
+	lsl x16,x16,2 //calc aux
+	add x21,x21,x16
+	
+	mov x18,x21 //prox linea
+	mov x19,x21
+
+	add x19,x19,x8 //moverme der
+
+	add x8,x8,4 //incremento lados
+
+pintar:
+
+	stur w13,[x18] // colorer
+	add x18,x18,4
+	subs xzr, x18,x19
+	bne pintar 
+
+	sub x22,x22,1 //decremento altura triang
+	cbnz x22, loopV
+	
+	sub x22, x28, 20 
+loopV2:
+	
+	add x21,x21,x16
+	mov x18,x21 //prox linea
+	mov x19,x21
+	add x19,x19,x8 //moverme der
+	sub x8,x8,4
+	
+
+aux_4:	
+	stur w13,[x18] // colorer
+	add x18,x18,4
+	subs xzr, x18,x19
+	bne aux_4 
+
+	sub x22,x22,1 //decremento altura triang
+	cbnz x22,loopV2 
+	
+	
+	b end_vela2
+
+
+mastil2:
+
+	mov x4, x13   		// esquina inf izquierda del bote
+	mov x5, 10
+	
+	mov x16,640
+	lsl x16,x16,2 
+		
+	top2:
+		add x4,x4 ,4
+		mov x7,x4			
+		mov x6,x29  			//largo del mastil 
+		continue:
+
+		stur w11,[x7]	
+		sub x7,x7,x16
+		sub x6,x6,1
+		cbnz x6, continue
+	
+		sub x5,x5,1
+	cbnz x5, top2
+	add x7,x7,4
+
+	b back2		// al final x7 debe guardar la esquina sup derecha +1 bit
 
