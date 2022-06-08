@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jun  5 18:11:03 2022
+# Make data base, printed on Tue Jun  7 21:40:24 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"es-419","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:44298
+JOURNAL_STREAM = 8:44240
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile
@@ -63,13 +63,13 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=e1a6f978934cadb0082a7cbb629d0c05
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=4b3bfed435b79d025e36fa33629fed12
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /usr/share/code/code
 # environment
-MANAGERPID = 1334
+MANAGERPID = 1331
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -81,7 +81,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/tomas-Aspire-A315-22:@/tmp/.ICE-unix/1569,unix/tomas-Aspire-A315-22:/tmp/.ICE-unix/1569
+SESSION_MANAGER = local/tomas-Aspire-A315-22:@/tmp/.ICE-unix/1563,unix/tomas-Aspire-A315-22:/tmp/.ICE-unix/1563
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -91,7 +91,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = a8d79c45d87948359a7fb57c57a3c174
+INVOCATION_ID = 903159bbc5c84d4fb0b797ab3b078e5a
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -101,7 +101,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5850
+GIO_LAUNCHED_DESKTOP_FILE_PID = 19795
 # automatic
 %F = $(notdir $%)
 # environment
@@ -113,7 +113,7 @@ PWD = /home/tomas/lab_org
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1525
+SSH_AGENT_PID = 1520
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -149,7 +149,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-063b676e-8541-4c34-af5c-14ce29c87d89.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e48a3aec-d063-4ec8-aeb9-b07adfef4f21.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -209,9 +209,9 @@ WINDOWPATH = 2
 # environment
 LANG = C
 # environment
-VSCODE_PID = 5850
+VSCODE_PID = 19795
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=e1a6f978934cadb0082a7cbb629d0c05
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=4b3bfed435b79d025e36fa33629fed12
 # variable set hash-table stats:
 # Load=100/1024=10%, Rehash=0, Collisions=13/122=11%
 
@@ -279,6 +279,6 @@ GNUmakefile:
 # strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
-# Finished Make data base on Sun Jun  5 18:11:03 2022
+# Finished Make data base on Tue Jun  7 21:40:24 2022
 
  

@@ -269,9 +269,9 @@ make_boat:
 	endbase:
 
 
-	sub x13, x12, 300
-	mov x29, 150           // altura mastil
-	mov x28, 70				// "mitad" altura vela
+	sub x13, x12, 240
+	mov x29, 120           // altura mastil
+	mov x28, 60				// "mitad" altura vela
 	b velaM						//hacer la vela
 end_vela1:
 
@@ -285,8 +285,8 @@ end_vela2:
 
 base : 
 	mov x4, x12	  		//centro del barco
-	sub x5, x4 ,600		//esquina izquierda del barco
-	add x7,x4, 600      //esquina derecha del barco
+	sub x5, x4 ,460		//esquina izquierda del barco
+	add x7,x4, 460      //esquina derecha del barco
 	
 	mov x19, 20
 	
