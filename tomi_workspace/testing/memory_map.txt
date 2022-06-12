@@ -7,67 +7,77 @@ Nombre           Origen             Longitud           Atributos
 Guión del enlazador y mapa de memoria
 
 LOAD app.o
+LOAD fun.o
 LOAD start.o
                 0x0000000000080000                . = 0x80000
 
-.text           0x0000000000080000    0x9052c
+.text           0x0000000000080000    0x908bc
  *(.text.boot)
  .text.boot     0x0000000000080000    0x100c8 start.o
                 0x0000000000080000                _start
  *(.text*)
- .text          0x00000000000900c8      0x464 app.o
-                0x00000000000900c8                main
- .text          0x000000000009052c    0x80000 start.o
+ .text          0x00000000000900c8      0x504 app.o
+                0x00000000000903b8                main
+ .text          0x00000000000905cc      0x2f0 fun.o
+ .text          0x00000000000908bc    0x80000 start.o
 
-.iplt           0x000000000011052c        0x0
- .iplt          0x000000000011052c        0x0 start.o
+.iplt           0x00000000001108bc        0x0
+ .iplt          0x00000000001108bc        0x0 start.o
 
-.rela.dyn       0x0000000000110530        0x0
- .rela.iplt     0x0000000000110530        0x0 start.o
+.rela.dyn       0x00000000001108c0        0x0
+ .rela.iplt     0x00000000001108c0        0x0 start.o
  .rela.text.boot
-                0x0000000000110530        0x0 start.o
+                0x00000000001108c0        0x0 start.o
 
-.data           0x000000000011052c        0x0
- .data          0x000000000011052c        0x0 app.o
- .data          0x000000000011052c        0x0 start.o
+.data           0x00000000001108bc        0x0
+ .data          0x00000000001108bc        0x0 app.o
+ .data          0x00000000001108bc        0x0 fun.o
+ .data          0x00000000001108bc        0x0 start.o
 
-.igot.plt       0x0000000000110530        0x0
- .igot.plt      0x0000000000110530        0x0 start.o
+.igot.plt       0x00000000001108c0        0x0
+ .igot.plt      0x00000000001108c0        0x0 start.o
 
-.bss            0x000000000011052c        0x4
+.bss            0x00000000001108bc        0x4
  *(.bss*)
- .bss           0x000000000011052c        0x0 app.o
- .bss           0x000000000011052c        0x0 start.o
-                0x0000000000110530                . = ALIGN (0x10)
- *fill*         0x000000000011052c        0x4 
-                0x0000000000110530                __bss_start = .
+ .bss           0x00000000001108bc        0x0 app.o
+ .bss           0x00000000001108bc        0x0 fun.o
+ .bss           0x00000000001108bc        0x0 start.o
+                0x00000000001108c0                . = ALIGN (0x10)
+ *fill*         0x00000000001108bc        0x4 
+                0x00000000001108c0                __bss_start = .
  *(.bss .bss.*)
  *(COMMON)
-                0x0000000000110530                __bss_end = .
-                0x0000000000110530                _end = .
+                0x00000000001108c0                __bss_end = .
+                0x00000000001108c0                _end = .
                 0x0000000000000000                __bss_size = ((__bss_end - __bss_start) >> 0x3)
 OUTPUT(kernel8.elf elf64-littleaarch64)
 LOAD linker stubs
 
-.debug_line     0x0000000000000000      0x1a6
- .debug_line    0x0000000000000000      0x153 app.o
- .debug_line    0x0000000000000153       0x53 start.o
+.debug_line     0x0000000000000000      0x2ce
+ .debug_line    0x0000000000000000      0x187 app.o
+ .debug_line    0x0000000000000187       0xf4 fun.o
+ .debug_line    0x000000000000027b       0x53 start.o
 
-.debug_info     0x0000000000000000       0x5c
+.debug_info     0x0000000000000000       0x8a
  .debug_info    0x0000000000000000       0x2e app.o
- .debug_info    0x000000000000002e       0x2e start.o
+ .debug_info    0x000000000000002e       0x2e fun.o
+ .debug_info    0x000000000000005c       0x2e start.o
 
-.debug_abbrev   0x0000000000000000       0x28
+.debug_abbrev   0x0000000000000000       0x3c
  .debug_abbrev  0x0000000000000000       0x14 app.o
- .debug_abbrev  0x0000000000000014       0x14 start.o
+ .debug_abbrev  0x0000000000000014       0x14 fun.o
+ .debug_abbrev  0x0000000000000028       0x14 start.o
 
-.debug_aranges  0x0000000000000000       0x60
+.debug_aranges  0x0000000000000000       0x90
  .debug_aranges
                 0x0000000000000000       0x30 app.o
  .debug_aranges
-                0x0000000000000030       0x30 start.o
+                0x0000000000000030       0x30 fun.o
+ .debug_aranges
+                0x0000000000000060       0x30 start.o
 
 .debug_str      0x0000000000000000       0x45
  .debug_str     0x0000000000000000       0x3d app.o
+ .debug_str     0x000000000000003d       0x3d fun.o
  .debug_str     0x000000000000003d        0x8 start.o
                                          0x3f (tamaño antes de la relajación)
