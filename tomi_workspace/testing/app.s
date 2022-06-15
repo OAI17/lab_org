@@ -3,7 +3,7 @@
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
 .equ BITS_PER_PIXEL,  	32
-
+.equ SUN_COLOR, 0xFFE200
 
 .equ HALF_SCREEN_HEIGH, 240 // Dimencion Cielo
 .equ SKYE_COLOR_I, 0x88FF // Color inical del cielo
@@ -192,18 +192,23 @@ bl delay
 
 	movz x12, 100		// cordenada Y 
 	movz x13, 640		// 
-	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	mul x12, x12, x13	// calcula la "esquina" izquierda del circulo
 	add x12, x12, 480	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
-	movz x15, 0xFF , lsl 16	// color del circulo
-	movk x15, 0x0 , lsl 0	//	
+	bl make_sun
 
-	mov x2 , 50    // radio del circulo
+
+	movz x12, 10		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 400	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_moon 
 	
-	bl make_circle
-
 //---------------------------------------------------------------
 // Infinite Loop 
 
@@ -211,41 +216,4 @@ InfLoop:
 	b InfLoop
 
 
-make_circle:
 
-	mul x5,x2,x2   // radio al cuadrado
-
-	sub x3,xzr,x2   		//	 cordenada Y del plano cartesiana la seteo en -r
-
-	lazo:
-		mov x6,x12
-		sub x4,xzr,x2  	// cordenada X del plano cartesiano	la seteo en -r
-		lazo_aux:
-
-		//	calcular si y*y + x*x <= r*r , si lo es pintar si no con un branch salteo el stur 
-
-			mul x8, x4,x4  		// x*x
-			mul x7, x3,x3  		// y*y
-			add x8, x8,x7  		// x*x + y*y
-			subs xzr, x8,x5 	// comparo la suma de los lados al cuadrado y el radio al cuadrado
-
-
-			bgt skip_paint
-			
-			stur w15,[x6]
-		
-		skip_paint:
-		//
-			add x6,x6, 4
-			add x4,x4,1
-			subs xzr,x4,x2
-			bne lazo_aux
-
-
-		add x3,x3,1
-		subs xzr,x3,x2
-		mov x13,640
-		lsl x13,x13, 2
-		add x12,x12,x13
-		bne lazo
-br x30
