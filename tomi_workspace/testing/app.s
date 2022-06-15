@@ -185,8 +185,6 @@ bl delay
 	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
 
 	bl fondo
-
-
 	
 
 
@@ -209,6 +207,88 @@ bl delay
 
 	bl make_moon 
 	
+	movz x12, 40		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 200	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+	movz x12, 120		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 200	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+	movz x12, 60		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 320	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+
+
+	movz x15, 0xFFA0 , lsl 16	// color de la base del barco
+	movk x15, 0x522D , lsl 0	//
+	
+
+	movz x12, 260		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 440	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0xFFFF , lsl 16		//color de las velas
+	movk x14, 0x0 , lsl 0	//
+
+
+	bl make_boat
+
+
+
+	movz x15, 0xFFCD , lsl 16	// color de la base del barco
+	movk x15, 0x853F , lsl 0	//
+	
+
+	movz x12, 300		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 220	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0xFFFF , lsl 16		//color de las velas
+	movk x14, 0xFFFF , lsl 0	//
+
+
+	bl make_boat
+
+	movz x15, 0xFF8B , lsl 16	// color de la base del barco
+	movk x15, 0x4513 , lsl 0	//	
+
+
+	movz x12, 380		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 490	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0x0 , lsl 16	// color de las velas
+	movk x14, 0x0 , lsl 0	//
+	bl make_boat
+
+
+
 //---------------------------------------------------------------
 // Infinite Loop 
 

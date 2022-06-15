@@ -352,6 +352,7 @@ br x30
 
 //fin de hacer el fondo
 
+// fin
 
 make_circle:
 
@@ -395,7 +396,9 @@ make_circle:
 
 br x30
 
+// fin del circulo
 
+//  funcion de la luna
 make_moon :
 
 	mov x29, x30 // guardo la direccion de retorno
@@ -479,7 +482,9 @@ make_moon :
 
 br x29
 
-// 
+// fin de la luna
+
+//  funcion del sol
 
 make_sun:
 
@@ -494,5 +499,77 @@ make_sun:
 	mov x2 , 50    // radio del sol
 	
 	bl make_circle
+
+br x29
+
+// fin del sol
+
+
+make_cloud:
+
+	mov x29,x30
+	mov x28, x12 // guardo el centro de la nube
+
+	movz x15, 0xFFFF , lsl 16		//	
+	movk x15, 0xFFFF, lsl 0		// color de la nube
+	
+
+	mov x2 , 25   	// radio del circulo
+
+	sub x12,x12,20 	// desplazo hacia la izquierda desde el centro de la nube
+
+	mov x10, 640		//
+	mov x11, 15			// desplazamiento en el eje Y de 
+	mul x10, x10,x11	//	
+	lsl x10,x10, 2		//
+
+	sub x12,x12,x10
+
+
+	bl make_circle
+
+	
+	
+	add x12,x12,0 // desplazo hacia la dercha desde el centro de la nube
+
+
+	mov x10, 640		//
+	mov x11, 20			// desplazamiento en el eje Y de 
+	mul x10, x10,x11	//	
+	lsl x10,x10, 2		//
+
+	sub x12,x12,x10
+
+	bl make_circle
+
+	mov x12, x28
+
+	add x12,x12,80 // desplazo hacia la dercha desde el centro de la nube
+
+
+	mov x10, 640		//
+	mov x11, 0			// desplazamiento en el eje Y de 
+	mul x10, x10,x11	//	
+	lsl x10,x10, 2		//
+
+	sub x12,x12,x10
+
+	bl make_circle
+
+	mov x12, x28
+
+	sub x12,x12,120 // desplazo hacia la dercha desde el centro de la nube
+
+
+	mov x10, 640		//
+	mov x11, 0			// desplazamiento en el eje Y de 
+	mul x10, x10,x11	//	
+	lsl x10,x10, 2		//
+
+	sub x12,x12,x10
+
+	bl make_circle
+
+
 
 br x29
