@@ -507,8 +507,6 @@ br x29
 
 make_cloud:
 
-	movz x16, 0x0,lsl 0
-
 	mov x29,x30
 	mov x28, x12 // guardo el centro de la nube
 
@@ -575,37 +573,3 @@ make_cloud:
 
 
 br x29
-
-make_mountain:
-	mov x21, x12 //centro
-	mov x19, x12
-	mov x22, 200 //altura triang
-	mov x8, 4 //incremento lados
-
-loopVM:
-	
-	mov x16,640
-	lsl x16,x16,2 //calc aux
-	add x21,x21,x16
-	
-	mov x18,x21 //prox linea
-	mov x19,x21
-
-	add x19,x19,x8 //moverme der
-	sub x18,x18,x8
-
-	add x8,x8,4 //incremento lados
-
-
-pintarM:
-
-	stur w14,[x18] // colorer
-	add x18,x18,4
-	subs xzr, x18,x19
-	bne pintarM
-
-	sub x22,x22,1 //decremento altura triang
-	cbnz x22, loopVM
-
-	br x30
-	
