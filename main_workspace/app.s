@@ -1,9 +1,10 @@
 .include "boat.s"
 .include "background.s"
 .include "sun.s"
+.include "mountain.s"
+.include "fish.s"
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
-.equ BITS_PER_PIXEL,  	32
 .globl main
 
 main:
@@ -23,8 +24,93 @@ main:
 	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
 
 	bl fondo
-	
+
+	//Sol
+	movz x12, 30		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del circulo
+	add x12, x12, 460	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_sun
+
+	//Primera montaNa
+	movz x12, 150		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 550	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 90			// Altura montaNa
+	movz x14, 0xFF87 , lsl 16	// color de las montaNas
+	movk x14, 0xCEFA , lsl 0	//
+
+	bl make_mountain
+
+	//Segunda montaNa	
+	movz x12, 100		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 500	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 140			// Altura montaNa
+
+	movz x14, 0x0 , lsl 16	// color de las montaNas
+	movk x14, 0xBBFF , lsl 0	//
+
+	bl make_mountain
+
+
+	//Nuve1
+	movz x12, 40		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 100	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+	//Nuve2
+	movz x12, 120		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 200	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+	//Nuve3
+	movz x12, 60		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 320	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
 	//Primer barco
+	movz x15, 0xFFA0 , lsl 16	// color de la base del barco
+	movk x15, 0x522D , lsl 0	//
+	
+
+	movz x12, 260		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 440	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0xFFFF , lsl 16		//color de las velas
+	movk x14, 0x0 , lsl 0	//
+
+
+	bl make_boat
+
+	//Segundo barco
 	movz x15, 0xFFCD , lsl 16	// color de la base del barco
 	movk x15, 0x853F , lsl 0	//
 	
@@ -41,7 +127,7 @@ main:
 	bl make_boat
 
 	
-	//Segundo barco
+	//Tercer barco
 	movz x15, 0xFF8B , lsl 16	// color de la base del barco
 	movk x15, 0x4513 , lsl 0	//	
 
@@ -57,21 +143,26 @@ main:
 	
 	bl make_boat
 
-	//Sol
-	movz x15, 0xFF , lsl 16	// color del circulo
-	movk x15, 0x0 , lsl 0	//	
+// Pescado pintado
 
-	mov x2 , 50    // radio del circulo
+	mov x3, 50 // Posicion X
+	mov x4, 400 // Posicion Y
+	mov x5, 640
+	mul x4, x4, x5
+	add x3, x3, x4
+	lsl x3, x3, 2
+	add x3, x20, x3
 
-	movz x12, 100		// cordenada Y 
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 480	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+	movz x6, 0xff20, lsl 16
+	movk x6, 0xb2aa, lsl 00
+	add x7, x3, xzr
+	add x8, x3, xzr
 
-	bl make_circle
+	mov x5, 10 ////TamaNo Cola
+	mov x4, x5
+	mov x10, 2560
 
+	bl fish
 
 //---------------------------------------------------------------
 // Infinite Loop 

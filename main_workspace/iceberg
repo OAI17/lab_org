@@ -1,0 +1,13 @@
+	//Segunda montaNa	
+	movz x12, 40		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 500	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 200			// Altura montaNa
+
+	movz x14, 0x0 , lsl 16	// color de las montaNas
+	movk x14, 0xBBFF , lsl 0	//
+
+	bl make_mountain
