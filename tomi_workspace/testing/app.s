@@ -48,6 +48,21 @@ main:
 
 	bl make_sun
 
+	movz x12, 40		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 500	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0xFF00 , lsl 16	// color de las velas
+	movk x14, 0x99FF , lsl 0	//
+
+	bl make_mountain
+
+
+
+
 	movz x12, 40		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
@@ -130,18 +145,6 @@ main:
 
 
 
-
-	movz x12, 210		// cordenada Y de 160 hasta 420
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 320	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
-
-	movz x14, 0xFF00 , lsl 16	// color de las velas
-	movk x14, 0x99FF , lsl 0	//
-
-	bl make_mountain
 
 //---------------------------------------------------------------
 // Infinite Loop 

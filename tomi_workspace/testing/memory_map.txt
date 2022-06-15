@@ -53,10 +53,10 @@ LOAD start.o
 OUTPUT(kernel8.elf elf64-littleaarch64)
 LOAD linker stubs
 
-.debug_line     0x0000000000000000      0x3a0
- .debug_line    0x0000000000000000      0x1d5 app.o
- .debug_line    0x00000000000001d5      0x178 fun.o
- .debug_line    0x000000000000034d       0x53 start.o
+.debug_line     0x0000000000000000      0x3a2
+ .debug_line    0x0000000000000000      0x1d7 app.o
+ .debug_line    0x00000000000001d7      0x178 fun.o
+ .debug_line    0x000000000000034f       0x53 start.o
 
 .debug_info     0x0000000000000000       0x8a
  .debug_info    0x0000000000000000       0x2e app.o
