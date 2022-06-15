@@ -11,52 +11,52 @@ LOAD fun.o
 LOAD start.o
                 0x0000000000080000                . = 0x80000
 
-.text           0x0000000000080000    0x90be4
+.text           0x0000000000080000    0x90c04
  *(.text.boot)
  .text.boot     0x0000000000080000    0x100c8 start.o
                 0x0000000000080000                _start
  *(.text*)
- .text          0x00000000000900c8      0x62c app.o
-                0x00000000000905b8                main
- .text          0x00000000000906f4      0x4f0 fun.o
- .text          0x0000000000090be4    0x80000 start.o
+ .text          0x00000000000900c8      0x63c app.o
+                0x00000000000905c8                main
+ .text          0x0000000000090704      0x500 fun.o
+ .text          0x0000000000090c04    0x80000 start.o
 
-.iplt           0x0000000000110be4        0x0
- .iplt          0x0000000000110be4        0x0 start.o
+.iplt           0x0000000000110c04        0x0
+ .iplt          0x0000000000110c04        0x0 start.o
 
-.rela.dyn       0x0000000000110be8        0x0
- .rela.iplt     0x0000000000110be8        0x0 start.o
+.rela.dyn       0x0000000000110c08        0x0
+ .rela.iplt     0x0000000000110c08        0x0 start.o
  .rela.text.boot
-                0x0000000000110be8        0x0 start.o
+                0x0000000000110c08        0x0 start.o
 
-.data           0x0000000000110be4        0x0
- .data          0x0000000000110be4        0x0 app.o
- .data          0x0000000000110be4        0x0 fun.o
- .data          0x0000000000110be4        0x0 start.o
+.data           0x0000000000110c04        0x0
+ .data          0x0000000000110c04        0x0 app.o
+ .data          0x0000000000110c04        0x0 fun.o
+ .data          0x0000000000110c04        0x0 start.o
 
-.igot.plt       0x0000000000110be8        0x0
- .igot.plt      0x0000000000110be8        0x0 start.o
+.igot.plt       0x0000000000110c08        0x0
+ .igot.plt      0x0000000000110c08        0x0 start.o
 
-.bss            0x0000000000110be4        0xc
+.bss            0x0000000000110c04        0xc
  *(.bss*)
- .bss           0x0000000000110be4        0x0 app.o
- .bss           0x0000000000110be4        0x0 fun.o
- .bss           0x0000000000110be4        0x0 start.o
-                0x0000000000110bf0                . = ALIGN (0x10)
- *fill*         0x0000000000110be4        0xc 
-                0x0000000000110bf0                __bss_start = .
+ .bss           0x0000000000110c04        0x0 app.o
+ .bss           0x0000000000110c04        0x0 fun.o
+ .bss           0x0000000000110c04        0x0 start.o
+                0x0000000000110c10                . = ALIGN (0x10)
+ *fill*         0x0000000000110c04        0xc 
+                0x0000000000110c10                __bss_start = .
  *(.bss .bss.*)
  *(COMMON)
-                0x0000000000110bf0                __bss_end = .
-                0x0000000000110bf0                _end = .
+                0x0000000000110c10                __bss_end = .
+                0x0000000000110c10                _end = .
                 0x0000000000000000                __bss_size = ((__bss_end - __bss_start) >> 0x3)
 OUTPUT(kernel8.elf elf64-littleaarch64)
 LOAD linker stubs
 
-.debug_line     0x0000000000000000      0x398
- .debug_line    0x0000000000000000      0x1d1 app.o
- .debug_line    0x00000000000001d1      0x174 fun.o
- .debug_line    0x0000000000000345       0x53 start.o
+.debug_line     0x0000000000000000      0x3a0
+ .debug_line    0x0000000000000000      0x1d5 app.o
+ .debug_line    0x00000000000001d5      0x178 fun.o
+ .debug_line    0x000000000000034d       0x53 start.o
 
 .debug_info     0x0000000000000000       0x8a
  .debug_info    0x0000000000000000       0x2e app.o

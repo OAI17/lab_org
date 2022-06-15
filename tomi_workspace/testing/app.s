@@ -138,8 +138,8 @@ main:
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
-	movz x14, 0x0 , lsl 16	// color de las velas
-	movk x14, 0x0 , lsl 0	//
+	movz x14, 0xFF00 , lsl 16	// color de las velas
+	movk x14, 0x99FF , lsl 0	//
 
 	bl make_mountain
 

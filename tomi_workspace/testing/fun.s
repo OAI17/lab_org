@@ -375,7 +375,7 @@ make_circle:
 			subs xzr, x8,x5 	// comparo la suma de los lados al cuadrado y el radio al cuadrado
 
 
-			bgt skip_paint
+			bge skip_paint
 			
 			stur w15,[x6]
 		
@@ -579,8 +579,10 @@ br x29
 make_mountain:
 	mov x21, x12 //centro
 	mov x19, x12
-	mov x22, 200 //altura triang
+	mov x22, 200 //altura montaña
 	mov x8, 4 //incremento lados
+
+	mov x25, 2
 
 loopVM:
 	
@@ -591,11 +593,18 @@ loopVM:
 	mov x18,x21 //prox linea
 	mov x19,x21
 
+
+
 	add x19,x19,x8 //moverme der
 	sub x18,x18,x8
 
+	sub x25,x25,1
+	cbnz x25 , skip2
+
+	mov x25,2
 	add x8,x8,4 //incremento lados
 
+	skip2:
 
 pintarM:
 
