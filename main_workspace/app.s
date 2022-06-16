@@ -2,7 +2,7 @@
 .include "background.s"
 .include "sun.s"
 .include "mountain.s"
-.include "fish.s"
+.include "letters.s"
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
 .globl main
@@ -155,14 +155,36 @@ main:
 
 	movz x6, 0xff20, lsl 16
 	movk x6, 0xb2aa, lsl 00
-	add x7, x3, xzr
-	add x8, x3, xzr
-
-	mov x5, 10 ////TamaNo Cola
-	mov x4, x5
-	mov x10, 2560
 
 	bl fish
+
+
+	mov x3, 30 // Posicion X
+	mov x4, 380 // Posicion Y
+	mov x5, 640
+	mul x4, x4, x5
+	add x3, x3, x4
+	lsl x3, x3, 2
+	add x3, x20, x3
+
+	movz x6, 0xff20, lsl 16
+	movk x6, 0xb2aa, lsl 00
+
+	bl fish
+
+	movz x3, 195	// y				
+    movz x4, 640
+    mul x3, x3, x4
+    add x3, x3,370	// x
+    lsl x3, x3, 2
+    add x3,x20,x3
+
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color 
+
+	bl make_I
+
+
 
 //---------------------------------------------------------------
 // Infinite Loop 

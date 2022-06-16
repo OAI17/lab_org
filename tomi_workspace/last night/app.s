@@ -1,119 +1,195 @@
-
+.include "boat.s"
+.include "background.s"
+.include "sun.s"
+.include "mountain.s"
+.include "letters.s"
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
-.equ BITS_PER_PIXEL,  	32
-
-
 .globl main
+
 main:
+
 	// X0 contiene la direccion base del framebuffer
  	mov x20, x0	// Save framebuffer base address to x20	
 	//---------------- CODE HERE ------------------------------------
+
+
+	//Fondo
+	movz x10, BASE_COLOR, lsl 16
+	movk x10, SKYE_COLOR_I, lsl 00
+
+	mov x11, Q_LINE // Cantidad de renglones con el mismo color
+	mov x9, SKYE_COLOR_I // Seteo variable de color
+	mov x12, 2 // Contador para mitad de la imagen
+	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
+
+	bl fondo
+
+	//Sol
+	movz x12, 30		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del circulo
+	add x12, x12, 460	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_sun
+
+	//Primera montaNa
+	movz x12, 150		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 550	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 90			// Altura montaNa
+	movz x14, 0xFF87 , lsl 16	// color de las montaNas
+	movk x14, 0xCEFA , lsl 0	//
+
+	bl make_mountain
+
+	//Segunda montaNa	
+	movz x12, 100		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 500	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 140			// Altura montaNa
+
+	movz x14, 0x0 , lsl 16	// color de las montaNas
+	movk x14, 0xBBFF , lsl 0	//
+
+	bl make_mountain
+
+
+	//Nuve1
+	movz x12, 40		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 100	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+	//Nuve2
+	movz x12, 120		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 200	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+	//Nuve3
+	movz x12, 60		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 320	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+	//Primer barco
+	movz x15, 0xFFA0 , lsl 16	// color de la base del barco
+	movk x15, 0x522D , lsl 0	//
 	
-	movz x10, 0x0, lsl 16	//mas sig transp los otros dos rojo -->> armar la tonalidad del color 	
-	movk x10, 0x0, lsl 00	//mas sig verde los otros dos azul
+
+	movz x12, 260		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 440	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0xFFFF , lsl 16		//color de las velas
+	movk x14, 0x0 , lsl 0	//
+
+
+	bl make_boat
+
+	//Segundo barco
+	movz x15, 0xFFCD , lsl 16	// color de la base del barco
+	movk x15, 0x853F , lsl 0	//
 	
-	movz x11, 0x0, lsl 16
-	movk x11, 0x0BFF, lsl 00
+	movz x12, 300		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 200	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
 
-	mov x2, SCREEN_HEIGH
-	 
-loop1:
-	mov x1, SCREEN_WIDTH         // X Size 
-
-loop0:
-	stur w10,[x0]	   // Set color of pixel N
-	add x0,x0,4	   // Next pixel
-	sub x1,x1,1	   // decrement X counter
+	movz x14, 0xFF , lsl 16		//color de las velas
+	movk x14, 0xFFFF , lsl 0	//
 	
-	cbnz x1,loop0	   // If not end row jump
-	sub x2,x2,1	   // Decrement Y counter
-	cbnz x2,loop1	   // if not last row, jump
+	bl make_boat
 
-	bl cuad
-	//---------------------------------------------------------------
-	// Infinite Loop 
-	b InfLoop
-
-for:
-	stur x11, [x17]
-	movz x16 , 640
-	add x16, x16 ,1
-	lsl x16,x16,2
-	sub x17 ,x17 ,x16 
-	sub x15, x15 , 1
-	cbnz x15, for
-	b back
-
-cuad:
-	movz x12, 210				// calcula la esquina sup derecha del cuadrado
-	movz x13, 640
-	mul x12, x12, x13
-	add x12, x12, 320
-	lsl x12, x12, 2
-	add x12,x20,x12
-
-	mov x17, x12
-	mov x15, 100
-	b for
-	back:
-	movz x15, 100
-
-test:
-	movz x14, 100
-	add x11,x11,256
-
-aux:
-
-	stur w11, [x12]
-	add x12,x12,4
-	sub x14,x14,1	
-	cbnz x14,aux
-
-	movz x16 , 220
-	add x16, x16 ,320
-	lsl x16,x16,2
-	add x12 ,x12 ,x16 
-	sub x15, x15 , 1
-	cbnz x15, test
-
-	br x30
-
-triang:
-	movz x18, 320
-	lsl x18,x18,2
-	add x18, x18, x20
-	mov x21, x18 //centro
-	mov x19,x18
-	mov x22, 100 //altura triang
-	mov x7, 4 //incremento lados
-	b bucle 
 	
+	//Tercer barco
+	movz x15, 0xFF8B , lsl 16	// color de la base del barco
+	movk x15, 0x4513 , lsl 0	//	
 
-bucle:
+	movz x12, 380		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 460	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
 
-	mov x16,640
-	lsl x16,x16,2 //calc aux
-	add x21,x21,x16
+	movz x14, 0x0 , lsl 16	// color de las velas
+	movk x14, 0x0 , lsl 0	//
 	
-	mov x18,x21 //prox linea
-	mov x19,x21
+	bl make_boat
 
-	sub x18,x18,x7 //moverme izq
-	add x19,x19,x7 //moverme der
+// Pescado pintado
 
-	add x7,x7,4 //incremento lados
+	mov x3, 50 // Posicion X
+	mov x4, 400 // Posicion Y
+	mov x5, 640
+	mul x4, x4, x5
+	add x3, x3, x4
+	lsl x3, x3, 2
+	add x3, x20, x3
 
-aux_2:
+	movz x6, 0xff20, lsl 16
+	movk x6, 0xb2aa, lsl 00
 
-	stur w11,[x18] // colorer
-	add x18,x18,4
-	subs xzr, x18,x19
-	bne aux_2 
+	bl fish
 
-	sub x22,x22,1 //decremento altura triang
-	cbnz x22, bucle
-	br x30
+
+	mov x3, 30 // Posicion X
+	mov x4, 380 // Posicion Y
+	mov x5, 640
+	mul x4, x4, x5
+	add x3, x3, x4
+	lsl x3, x3, 2
+	add x3, x20, x3
+
+	movz x6, 0xff20, lsl 16
+	movk x6, 0xb2aa, lsl 00
+
+	bl fish
+
+	movz x3, 195	// y				
+    movz x4, 640
+    mul x3, x3, x4
+    add x3, x3,370	// x
+    lsl x3, x3, 2
+    add x3,x20,x3
+
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color 
+
+	bl make_I
+
+
+
+//---------------------------------------------------------------
+// Infinite Loop 
 
 InfLoop: 
 	b InfLoop
+
+
