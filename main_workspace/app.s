@@ -184,6 +184,31 @@ main:
 
 	bl make_I
 
+	movz x3, 210				
+	movz x4, 640
+	mul x3, x3, x4
+	add x3, x3, 320
+	lsl x3, x3, 2
+	add x3,x20,x3	// Lo mandé a el centro de la pantalla, pero se puede incializar en cualquir lado
+	
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color 
+
+	bl make_H
+
+
+	movz x3, 195	// y				
+    movz x4, 640
+    mul x3, x3, x4
+    add x3, x3, 290	// x
+    lsl x3, x3, 2
+    add x3,x20,x3
+
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color 
+
+
+	bl make_T
 
 
 //---------------------------------------------------------------

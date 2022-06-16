@@ -1,11 +1,7 @@
 
+
+make_H:
 	// Dir base de la letra H
-	movz x3, 210				
-	movz x4, 640
-	mul x3, x3, x4
-	add x3, x3, 320
-	lsl x3, x3, 2
-	add x3,x20,x3	// Lo mandé a el centro de la pantalla, pero se puede incializar en cualquir lado
 	mov x8, 15 // Contador para el palo vertical
     mov x10, 20 // Contador para el palo horizontal
 	mov x7, x3 // guardo la pos inicial de la letra
@@ -15,10 +11,6 @@
     add x11, x11, 80
     mov x12, x3
     add x12, x12, 80
-
-	//Pintar Letra H
-
-make_H:
 
 pintarLinea1:
 
@@ -46,15 +38,11 @@ pintarLinea2:
 
 br x30
 
+
+
 make_T:
 // Big T
-    movz x3, 195	// y				
-    movz x4, 640
-    mul x3, x3, x4
-    add x3, x3, 290	// x
-    lsl x3, x3, 2
-    add x3,x20,x3
-
+    
     mov x5, x3
     mov x7, x3
 
