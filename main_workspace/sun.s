@@ -195,7 +195,7 @@ cola2P:
 
 
 cardumen : 
-	mov x29,x30
+	mov x27,x30
 
 	mov x14,x3
 
@@ -228,4 +228,4 @@ cardumen :
 	 
 	bl fish
 
-	br x29
+	br x27

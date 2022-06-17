@@ -1,14 +1,16 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/tomas/lab_org/main_workspace'
+aarch64-linux-gnu-as -g --warn --fatal-warnings iceberg.s -o iceberg.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings app.s -o app.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings global.s -o global.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings boat.s -o boat.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings sun.s -o sun.o
+aarch64-linux-gnu-as -g --warn --fatal-warnings delay.s -o delay.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings background.s -o background.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings start.s -o start.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings letters.s -o letters.o
 aarch64-linux-gnu-as -g --warn --fatal-warnings mountain.s -o mountain.o
-aarch64-linux-gnu-ld app.o global.o boat.o sun.o background.o start.o letters.o mountain.o -T memmap -o kernel8.elf -M > memory_map.txt
+aarch64-linux-gnu-ld iceberg.o app.o global.o boat.o sun.o delay.o background.o start.o letters.o mountain.o -T memmap -o kernel8.elf -M > memory_map.txt
 aarch64-linux-gnu-objdump -D kernel8.elf > kernel8.list
 aarch64-linux-gnu-objcopy kernel8.elf -O binary kernel8.img
 make: Leaving directory '/home/tomas/lab_org/main_workspace'

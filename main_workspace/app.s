@@ -2,172 +2,248 @@
 .include "background.s"
 .include "sun.s"
 .include "mountain.s"
+.include "iceberg.s"
 .include "letters.s"
+.include "frames/frame1.s"
+.include "frames/frame2.s"
+.include "frames/frame3.s"
+.include "frames/frame4.s"
+.include "frames/frame5.s"
+.include "frames/frame6.s"
+.include "frames/frame7.s"
+.include "frames/frame8.s"
+.include "frames/frame9.s"
+.include "frames/frame10.s"
+.include "frames/frame11.s"
+.include "frames/frame12.s"
+.include "frames/frame13.s"
+.include "frames/frame14.s"
+.include "frames/frame15.s"
+.include "frames/frame16.s"
+.include "frames/frame17.s"
+.include "frames/frame18.s"
+.include "frames/frame19.s"
+.include "frames/frame20.s"
+.include "frames/frame21.s"
+.include "frames/frame22.s"
+.include "frames/frame23.s"
+.include "frames/frame24.s"
+.include "frames/frame25.s"
+.include "frames/frame26.s"
+.include "frames/frame27.s"
+.include "frames/frame28.s"
+.include "frames/frame29.s"
+.include "frames/frame30.s"
+.include "frames/frame31.s"
+.include "frames/frame32.s"
+.include "frames/frame33.s"
+.include "frames/frame34.s"
+.include "frames/frame35.s"
+.include "frames/frame36.s"
+.include "frames/frame37.s"
+.include "frames/frame38.s"
+.include "frames/frame39.s"
+.include "frames/frame40.s"
+.include "frames/frame41.s"
+.include "frames/frame42.s"
+.include "frames/frame43.s"
+.include "frames/frame44.s"
+.include "frames/frame45.s"
+.include "frames/frame46.s"
+.include "frames/frame47.s"
+.include "frames/frame48.s"
+.include "frames/frame49.s"
+.include "frames/frame50.s"
+.include "frames/frame51.s"
+.include "frames/frame52.s"
+.include "frames/frame53.s"
+.include "frames/frame54.s"
+.include "frames/frame55.s"
+.include "frames/frame56.s"
+
+.include "delay.s"
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
 .globl main
 .globl make_H
 .globl make_I
 .globl make_T
-
+ 
 main:
 
 	// X0 contiene la direccion base del framebuffer
  	mov x20, x0	// Save framebuffer base address to x20	
 	//---------------- CODE HERE ------------------------------------
 
+bl frame1
+bl delay0
 
-	//Fondo
-	movz x10, BASE_COLOR, lsl 16
-	movk x10, SKYE_COLOR_I, lsl 00
+bl frame2
+bl delay0
 
-	mov x11, Q_LINE // Cantidad de renglones con el mismo color
-	mov x9, SKYE_COLOR_I // Seteo variable de color
-	mov x12, 2 // Contador para mitad de la imagen
-	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
+bl frame3
+bl delay0
 
-	bl fondo
+bl frame4
+bl delay0
 
-	//Sol
-	movz x12, 30		// cordenada Y 
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula la "esquina" izquierda del circulo
-	add x12, x12, 460	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+bl frame5
+bl delay0
 
-	bl make_sun
+bl frame6
+bl delay0
 
-	//Primera montaNa
-	movz x12, 150		// cordenada Y de 160 hasta 420
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 550	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
-	mov x2, 90			// Altura montaNa
-	movz x14, 0xFF87 , lsl 16	// color de las montaNas
-	movk x14, 0xCEFA , lsl 0	//
+bl frame7
+bl delay0
 
-	bl make_mountain
+bl frame8
+bl delay0
 
-	//Segunda montaNa	
-	movz x12, 100		// cordenada Y de 160 hasta 420
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 500	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
-	mov x2, 140			// Altura montaNa
+bl frame9
+bl delay0
 
-	movz x14, 0x0 , lsl 16	// color de las montaNas
-	movk x14, 0xBBFF , lsl 0	//
+bl frame10
+bl delay0
 
-	bl make_mountain
+bl frame11
+bl delay0
 
+bl frame12
+bl delay0
 
-	//Nuve1
-	movz x12, 40		// cordenada Y 
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 100	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+bl frame13
+bl delay0
 
-	bl make_cloud
-	//Nuve2
-	movz x12, 120		// cordenada Y 
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 200	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+bl frame14
+bl delay0
 
-	bl make_cloud
+bl frame15
+bl delay0
 
-	//Nuve3
-	movz x12, 60		// cordenada Y 
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 320	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+bl frame16
+bl delay0
 
-	bl make_cloud
+bl frame17
+bl delay0
 
-	//Primer barco
-	movz x15, 0xFFA0 , lsl 16	// color de la base del barco
-	movk x15, 0x522D , lsl 0	//
-	
+bl frame18
+bl delay0
 
-	movz x12, 260		// cordenada Y de 160 hasta 420
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 440	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+bl frame19
+bl delay0
 
-	movz x14, 0xFFFF , lsl 16		//color de las velas
-	movk x14, 0x0 , lsl 0	//
+bl frame20
+bl delay0
 
-	mov x11, 2
+bl frame21
+bl delay0
 
-	bl make_boat
+bl frame22
+bl delay0
 
-	//Segundo barco
-	movz x15, 0xFFCD , lsl 16	// color de la base del barco
-	movk x15, 0x853F , lsl 0	//
-	
-	movz x12, 300		// cordenada Y de 160 hasta 420
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 200	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+bl frame23
+bl delay0
 
-	movz x14, 0xFF , lsl 16		//color de las velas
-	movk x14, 0xFFFF , lsl 0	//
-	
-	mov x11, 3
+bl frame24
+bl delay0
 
-	bl make_boat
+bl frame25
+bl delay0
 
-	
-	//Tercer barco
-	movz x15, 0xFF8B , lsl 16	// color de la base del barco
-	movk x15, 0x4513 , lsl 0	//	
+bl frame26
+bl delay0
 
-	movz x12, 380		// cordenada Y de 160 hasta 420
-	movz x13, 640		// 
-	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 460	// cordenada X de 
-	lsl x12, x12, 2		//
-	add x12,x20,x12     // 
+bl frame27
+bl delay0
 
-	movz x14, 0x0 , lsl 16	// color de las velas
-	movk x14, 0x0 , lsl 0	//
+bl frame28
+bl delay0
 
-	mov x11, 1
+bl frame29
+bl delay0
 
-	bl make_boat
+bl frame30
+bl delay0
 
-// Pescado pintado
+bl frame31
+bl delay0
+
+bl frame32
+bl delay0
+
+bl frame33
+bl delay0
+
+bl frame34
+bl delay0
+
+bl frame35
+bl delay0
+
+bl frame36
+bl delay0
+
+bl frame37
+bl delay0
+
+bl frame38
+bl delay0
+
+bl frame39
+bl delay0
+
+bl frame40
+bl delay0
+
+bl frame41
+bl delay0
+
+bl frame42
+bl delay0
+
+bl frame43
+bl delay0
+
+bl frame44
+bl delay0
 
 
-	mov x3, 50 // Posicion X
-	mov x4, 400 // Posicion Y
-	mov x5, 640 
-	mul x4, x4, x5		//
-	add x3, x3, x4		//	
-	lsl x3, x3, 2		//	calculo el centro del cardumen
-	add x3, x20, x3		//
+bl frame45
+bl delay0
 
+bl frame46
+bl delay0
 
-	movz x6, 0xff20, lsl 16		// color de los peces del cardumen
-	movk x6, 0xb2aa, lsl 00		//
+bl frame47
+bl delay0
 
+bl frame48
+bl delay0
 
-	bl cardumen
+bl frame49
+bl delay0
+
+bl frame50
+bl delay0
+
+bl frame51
+bl delay0
+
+bl frame52
+bl delay0
+
+bl frame53
+bl delay0
+
+bl frame54
+bl delay0
+
+bl frame55
+bl delay0
+
+bl frame56
+bl delay0
+
 
 
 //---------------------------------------------------------------

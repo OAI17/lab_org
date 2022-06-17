@@ -2,6 +2,7 @@ ARMGNU ?= aarch64-linux-gnu
 
 AOPS = -g --warn --fatal-warnings
 ASM_SRCS = $(wildcard *.s)
+ASM_SRCS2 = $(wildcard *frames/.s)
 ASM_OBJS = $(ASM_SRCS:.s=.o)
 
 all : kernel8.img

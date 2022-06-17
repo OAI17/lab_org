@@ -1,3 +1,4 @@
+
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
 .equ BITS_PER_PIXEL,  	32
@@ -15,7 +16,6 @@
 .equ POS_WAVES, 0
 .equ WAVES_COLOR, 0x00FF
 .equ DIST_WAVES, 3000
-.equ RADIO_WAVES, 150
 
 
 fondo:
@@ -23,14 +23,14 @@ mov x0, x20
 mov x27, x30
 
 loop1:
-	mov x1, SCREEN_WIDTH         // X Size
+	mov x13, SCREEN_WIDTH         // X Size
 
 
 loop0:
 	stur w10,[x0]	   // Set color of pixel N
 	add x0,x0,4	   // Next pixel
-	sub x1,x1,1	   // decrement X counter
-	cbnz x1,loop0	   // If not end row jump
+	sub x13,x13,1	   // decrement X counter
+	cbnz x13,loop0	   // If not end row jump
 	
 	/*Degrades*/
 	cmp x12,2
@@ -72,7 +72,6 @@ sea_effects:
 	add x3,x20,x3	// Lo mandé a el centro de la pantalla
 
 	mov x7, x3 // guardo la pos inicial del circulo
-	mov x8, RADIO_WAVES // radio mov x22, del circulo
 	mov x9, x8
 	//Pintar Circulo	
 
