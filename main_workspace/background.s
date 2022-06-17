@@ -3,8 +3,8 @@
 .equ BITS_PER_PIXEL,  	32
 
 .equ HALF_SCREEN_HEIGH, 240 // Dimencion Cielo
-.equ SKYE_COLOR_I, 0x88FF // Color inical del cielo
-.equ INCREMENT_COLOR, 0x80000 // Incremento para degrades
+.equ SKYE_COLOR_I, 0x16FF // Color inical del cielo
+.equ INCREMENT_COLOR, 0x0400 // Incremento para degrades
 .equ Q_LINE, 10 // Cantidad de lineas del mismo color
 
 .equ BASE_COLOR, 0xFF00 // Color base
@@ -19,8 +19,8 @@
 
 
 fondo:
-
 mov x0, x20
+mov x27, x30
 
 loop1:
 	mov x1, SCREEN_WIDTH         // X Size
@@ -31,12 +31,12 @@ loop0:
 	add x0,x0,4	   // Next pixel
 	sub x1,x1,1	   // decrement X counter
 	cbnz x1,loop0	   // If not end row jump
-
+	
 	/*Degrades*/
 	cmp x12,2
 	b.ne decrement_y
-	cbnz x11, decrement_y // Compara si termino de pintar el bloque del mismo color
-	sub x11,x11,1 
+	sub x11,x11,1
+	cbnz x11, decrement_y // Compara si termino de pintar el bloque del mismo color 
 	add x9, x10, INCREMENT_COLOR // Calcular nuevo color
 	mov x10, x9 // Seteo de nuevo color
 	mov x11,Q_LINE // Reinicio de contador de renglones
@@ -46,6 +46,11 @@ loop0:
 	cbnz x2,loop1	   // if not last row, jump
 	/*Termina de pintar el cielo*/
 	
+	cbz x29, skp //Veo si es de dia o noche
+	//movz x10, 0xffff, lsl 0 
+	//bl rand
+	
+	skp:
 	sub x12, x12, 1 // Primera mitad pintada 
 	cmp x12, 1 
 	b.ne sea_effects
@@ -55,6 +60,7 @@ loop0:
 	movz x10, BASE_COLOR, lsl 16 // Seteo color del mar
 	movk x10, SEA_COLOR_l, lsl 00 // Seteo color del mar
 	b loop1
+
 
 sea_effects:
 	// Dir base del Circulo
@@ -85,6 +91,43 @@ sea_effects:
 	add x3, x3, DIST_WAVES // Espacio entre linea 
 	cbnz x9, pintarLinea 
 
+br x27
+
+//Estrellas
+rand:
+
+    movz x21, 0xbbc1, lsl 0
+    movk x21, 0xabcd, lsl 16
+    movk x21, 0xd200, lsl 32
+    movk x21, 0xfff7, lsl 48
+
+    mov x23, 30
+
+    mov x24, x21
+    lsr x24, x24, 47 //random y
+    mov x25, x21
+    lsr x25, x25, 39 ////random x
+
+    //calc coord
+
+    mov x26, 640
+    mul x24, x26, x24
+    add x24, x24, x25
+    lsl x24, x24, 2
+    add x28, x24, x20
+    lsl x5, x21, 3
+    eor x21, x21, x5
+
+    str w10, [x28]
+    add x28, x28, 2560
+    str w10, [x28]
+    sub x28, x28 ,4
+    str w10, [x28]
+    add x28, x28, 8
+    str w10, [x28]
+    sub x28, x28, 4
+
 br x30
 
 //fin de hacer el fondo
+

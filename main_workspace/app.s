@@ -3,9 +3,9 @@
 .include "sun.s"
 .include "mountain.s"
 .include "letters.s"
+.include "global.s"
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
-.globl main
 
 main:
 
@@ -23,8 +23,9 @@ main:
 	mov x12, 2 // Contador para mitad de la imagen
 	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
 
+	mov x29, 0 // Variable dia=0/noche=1
 	bl fondo
-
+	
 	//Sol
 	movz x12, 30		// cordenada Y 
 	movz x13, 640		// 
