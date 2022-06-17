@@ -24,7 +24,7 @@ main:
 	mov x9, SKYE_COLOR_I // Seteo variable de color
 	mov x12, 2 // Contador para mitad de la imagen
 	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
-
+	
 
 	bl fondo
 	
@@ -36,10 +36,10 @@ main:
 
 	movz x26, 0xD700, lsl 0 //color estrellas
     movk x26, 0xFFFF, lsl 16 //color estrellas
-	mov x6, 30
+	mov x6, 30 
 
-	mov x1, 100 //contador de estrellas
-	mov x29, 0 // Variable dia=0/noche=1
+	mov x1, 100 //contador de estrellas cambiar x1 
+	mov x29, 1 // Variable dia=0/noche=1
 		
 	bl rand
 	
