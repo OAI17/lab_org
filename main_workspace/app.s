@@ -153,32 +153,22 @@ main:
 
 // Pescado pintado
 
+
 	mov x3, 50 // Posicion X
 	mov x4, 400 // Posicion Y
-	mov x5, 640
-	mul x4, x4, x5
-	add x3, x3, x4
-	lsl x3, x3, 2
-	add x3, x20, x3
-
-	movz x6, 0xff20, lsl 16
-	movk x6, 0xb2aa, lsl 00
-
-	bl fish
+	mov x5, 640 
+	mul x4, x4, x5		//
+	add x3, x3, x4		//	
+	lsl x3, x3, 2		//	calculo el centro del cardumen
+	add x3, x20, x3		//
 
 
-	mov x3, 30 // Posicion X
-	mov x4, 380 // Posicion Y
-	mov x5, 640
-	mul x4, x4, x5
-	add x3, x3, x4
-	lsl x3, x3, 2
-	add x3, x20, x3
+	movz x6, 0xff20, lsl 16		// color de los peces del cardumen
+	movk x6, 0xb2aa, lsl 00		//
 
-	movz x6, 0xff20, lsl 16
-	movk x6, 0xb2aa, lsl 00
 
-	bl fish
+	bl cardumen
+
 
 //---------------------------------------------------------------
 // Infinite Loop 

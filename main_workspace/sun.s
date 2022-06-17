@@ -192,3 +192,40 @@ cola2P:
 	bl make_circle
 
 	br x29
+
+
+cardumen : 
+	mov x29,x30
+
+	mov x14,x3
+
+	mov x4, 15
+	mov x5, 2560 
+	mul x4, x4, x5		//
+	add x3,x3,x4
+
+
+	bl fish
+
+	mov x3,x14
+
+	mov x4, 15
+	mov x5, 2560 
+	mul x4, x4, x5		//
+	sub x3,x3,x4
+	
+	bl fish
+
+	mov x3,x14
+
+
+	sub x3,x3,120
+	
+	bl fish
+
+	mov x3,x14
+	add x3,x3,120
+	 
+	bl fish
+
+	br x29
