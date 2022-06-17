@@ -1,6 +1,6 @@
 
 .include "global.s"
-frame85:
+frame92:
     mov x1,x30
 	//Fondo
 	movz x10, BASE_COLOR, lsl 16
@@ -17,10 +17,10 @@ frame85:
 
 	//luna
 	
-    mov x12, -90		// cordenada Y 
+    mov x12, -55		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 100	// cordenada X de 
+	add x12, x12, 128	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -59,7 +59,7 @@ frame85:
 	movz x12, 40		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 432	// cordenada X de 
+	add x12, x12, 465	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -68,7 +68,7 @@ frame85:
 	movz x12, 120		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 530	// cordenada X de 
+	add x12, x12, 565	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -78,7 +78,7 @@ frame85:
 	movz x12, 60		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 618	// cordenada X de 
+	add x12, x12, 650	// cordenada X de 
     lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -89,10 +89,10 @@ frame85:
 	movk x15, 0x522D , lsl 0	//
 	
 
-	movz x12, 259	// cordenada Y de 160 hasta 420
+	movz x12, 250	// cordenada Y de 160 hasta 420
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 296	// cordenada X de 
+	add x12, x12, 318	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -105,13 +105,15 @@ frame85:
 
 	bl make_boat
 
-	movz x12, 350		// cordenada Y de 160 hasta 420
+    // hace el iceberg
+
+	movz x12, 315		// cordenada Y de 160 hasta 420
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula el centro del barco
 	add x12, x12, 450	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
-	mov x2, 10			// Altura montaNa
+	mov x2, 45			// Altura montaNa
 
 	movz x14, 0xFFAF , lsl 16	// color de las montaNas
 	movk x14, 0xEEEE , lsl 0	//
@@ -127,7 +129,7 @@ frame85:
 	movz x12, 300		// cordenada Y de 160 hasta 420
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 207	// cordenada X de 
+	add x12, x12, 218	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -143,10 +145,10 @@ frame85:
 	movz x15, 0xFF8B , lsl 16	// color de la base del barco
 	movk x15, 0x4513 , lsl 0	//	
 
-	movz x12, 385		// cordenada Y de 160 hasta 420
+	movz x12, 390		// cordenada Y de 160 hasta 420
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 300	// cordenada X de 
+	add x12, x12, 318	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 

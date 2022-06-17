@@ -89,6 +89,34 @@
 .include "frames/frame83.s"
 .include "frames/frame84.s"
 .include "frames/frame85.s"
+.include "frames/frame86.s"
+.include "frames/frame87.s"
+.include "frames/frame88.s"
+.include "frames/frame89.s"
+.include "frames/frame90.s"
+.include "frames/frame91.s"
+.include "frames/frame92.s"
+.include "frames/frame93.s"
+.include "frames/frame94.s"
+.include "frames/frame95.s"
+.include "frames/frame96.s"
+.include "frames/frame97.s"
+.include "frames/frame98.s"
+.include "frames/frame99.s"
+.include "frames/frame100.s"
+.include "frames/frame101.s"
+.include "frames/frame102.s"
+.include "frames/frame103.s"
+.include "frames/frame104.s"
+.include "frames/frame105.s"
+.include "frames/frame106.s"
+.include "frames/frame107.s"
+.include "frames/frame108.s"
+.include "frames/frame109.s"
+.include "frames/frame110.s"
+.include "frames/frame111.s"
+.include "frames/frame112.s"
+.include "frames/frame113.s"
 
 
 .include "delay.s"
@@ -363,6 +391,93 @@ bl delay0
 bl frame85
 bl delay0
 
+bl frame86
+bl delay0
+
+bl frame87
+bl delay0
+
+bl frame88
+bl delay0
+
+bl frame89
+bl delay0
+
+bl frame91
+bl delay0
+
+bl frame92
+bl delay0
+
+bl frame93
+bl delay0
+
+bl frame94
+bl delay0
+
+bl frame95
+bl delay0
+
+bl frame96
+bl delay0
+
+bl frame97
+bl delay0
+
+bl frame98
+bl delay0
+
+bl frame99
+bl delay0
+
+bl frame100
+bl delay0
+
+bl frame101
+bl delay0
+
+bl frame102
+bl delay0
+
+bl frame103
+bl delay0
+
+bl frame104
+bl delay0
+
+bl frame105
+bl delay0
+
+bl frame106
+bl delay0
+
+bl frame107
+bl delay0
+
+bl frame108
+bl delay0
+
+bl frame109
+bl delay0
+
+bl frame110
+bl delay0
+
+bl frame111
+bl delay0
+
+bl frame112
+bl delay0
+
+bl frame113
+bl delay0
+
+
+//////
+
+// hacer que la pantalla quede en negro
+
+////
 
 //---------------------------------------------------------------
 // Infinite Loop 

@@ -1,13 +1,12 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
- 
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 17 11:34:23 2022
+# Make data base, printed on Fri Jun 17 16:20:13 2022
 
 # Variables
 
@@ -46,7 +45,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"es-419","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:42539
+JOURNAL_STREAM = 8:43447
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 5)
@@ -64,13 +63,13 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=17891fc9f3da7fcde4e0d24e62ac6ffb
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=b51bbeb41e873aeba92e6e2262acbf17
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /usr/share/code/code
 # environment
-MANAGERPID = 1323
+MANAGERPID = 1322
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -82,7 +81,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/tomas-Aspire-A315-22:@/tmp/.ICE-unix/1556,unix/tomas-Aspire-A315-22:/tmp/.ICE-unix/1556
+SESSION_MANAGER = local/tomas-Aspire-A315-22:@/tmp/.ICE-unix/1553,unix/tomas-Aspire-A315-22:/tmp/.ICE-unix/1553
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -92,7 +91,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = ad067693e356456e9cc098581918a206
+INVOCATION_ID = ce04770a18894a8da9ee1a9614d969f8
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -102,7 +101,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 14723
+GIO_LAUNCHED_DESKTOP_FILE_PID = 14160
 # automatic
 %F = $(notdir $%)
 # environment
@@ -116,7 +115,7 @@ PWD = /home/tomas/lab_org/main_workspace
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1513
+SSH_AGENT_PID = 1510
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -154,7 +153,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-10989f93-3167-40c8-96ef-f690854827d8.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-541b8f02-c235-456f-92d2-f153e599ef67.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -218,9 +217,9 @@ WINDOWPATH = 2
 # environment
 LANG = C
 # environment
-VSCODE_PID = 14723
+VSCODE_PID = 14160
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=17891fc9f3da7fcde4e0d24e62ac6ffb
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=b51bbeb41e873aeba92e6e2262acbf17
 # variable set hash-table stats:
 # Load=105/1024=10%, Rehash=0, Collisions=13/133=10%
 
@@ -230,9 +229,9 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=17891fc9f3da7fcde4e0d24
 
 # Directories
 
-# . (device 2050, inode 5113204): 40 files, no impossibilities.
+# . (device 2050, inode 5113204): 39 files, no impossibilities.
 
-# 40 files, no impossibilities in 1 directories.
+# 39 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -247,7 +246,7 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=17891fc9f3da7fcde4e0d24
 background.o: background.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'background'
-#  Last modified 2022-06-17 11:32:36.482858589
+#  Last modified 2022-06-17 16:19:12.986111726
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -256,14 +255,14 @@ background.o: background.s
 # Not a target:
 sun.s:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 10:51:37.548700753
+#  Last modified 2022-06-17 15:55:32.66861037
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 global.s:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 11:29:46.541945395
+#  Last modified 2022-06-17 15:56:32.60785993
 #  File has been updated.
 #  Successfully updated.
 
@@ -277,16 +276,16 @@ all: kernel8.img
 iceberg.o: iceberg.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'iceberg'
-#  Last modified 2022-06-17 11:32:36.33883983
+#  Last modified 2022-06-17 16:19:12.422116866
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
- 
 	$(ARMGNU)-as $(AOPS) $< -o $@
 
 # Not a target:
 letters.s:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-06-16 19:37:54.86115
 #  File has been updated.
 #  Successfully updated.
@@ -308,7 +307,7 @@ Makefile:
 start.o: start.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'start'
-#  Last modified 2022-06-17 11:32:36.506861715
+#  Last modified 2022-06-17 16:19:13.054111106
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -317,14 +316,14 @@ start.o: start.s
 # Not a target:
 delay.s:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 10:53:15.882468152
+#  Last modified 2022-06-17 13:12:48.502132618
 #  File has been updated.
 #  Successfully updated.
 
 app.o: app.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'app'
-#  Last modified 2022-06-17 11:32:36.366843477
+#  Last modified 2022-06-17 16:19:12.706114278
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -333,7 +332,7 @@ app.o: app.s
 # Not a target:
 background.s:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 10:30:55.998359101
+#  Last modified 2022-06-17 14:17:36.600201085
 #  File has been updated.
 #  Successfully updated.
 
@@ -367,7 +366,7 @@ run: all
 # Not a target:
 app.s:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 11:29:30.302333006
+#  Last modified 2022-06-17 16:13:47.964834735
 #  File has been updated.
 #  Successfully updated.
 
@@ -381,7 +380,7 @@ clean:
 sun.o: sun.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'sun'
-#  Last modified 2022-06-17 11:32:36.438852857
+#  Last modified 2022-06-17 16:19:12.87811271
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -390,7 +389,7 @@ sun.o: sun.s
 global.o: global.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'global'
-#  Last modified 2022-06-17 11:32:36.386846083
+#  Last modified 2022-06-17 16:19:12.766113731
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -406,7 +405,7 @@ runGDB:
 letters.o: letters.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'letters'
-#  Last modified 2022-06-17 11:32:36.534865363
+#  Last modified 2022-06-17 16:19:13.114110559
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -436,7 +435,7 @@ mountain.s:
 boat.o: boat.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'boat'
-#  Last modified 2022-06-17 11:32:36.41484973
+#  Last modified 2022-06-17 16:19:12.822113221
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -445,7 +444,7 @@ boat.o: boat.s
 mountain.o: mountain.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'mountain'
-#  Last modified 2022-06-17 11:32:36.554867968
+#  Last modified 2022-06-17 16:19:13.15011023
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -453,7 +452,7 @@ mountain.o: mountain.s
 
 kernel8.img: memmap iceberg.o app.o global.o boat.o sun.o delay.o background.o start.o letters.o mountain.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-17 11:32:36.686885164
+#  Last modified 2022-06-17 16:19:13.570106401
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -464,7 +463,7 @@ kernel8.img: memmap iceberg.o app.o global.o boat.o sun.o delay.o background.o s
 delay.o: delay.s
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'delay'
-#  Last modified 2022-06-17 11:32:36.462855983
+#  Last modified 2022-06-17 16:19:12.930112236
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
@@ -478,12 +477,12 @@ delay.o: delay.s
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 60 / storage = 495 B / avg = 8 B
-# current buf: size = 8162 B / used = 495 B / count = 60 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 59 / storage = 487 B / avg = 8 B
+# current buf: size = 8162 B / used = 487 B / count = 59 / avg = 8 B
 
-# strcache performance: lookups = 107 / hit rate = 43%
+# strcache performance: lookups = 106 / hit rate = 44%
 # hash-table stats:
-# Load=60/8192=1%, Rehash=0, Collisions=1/107=1%
-# Finished Make data base on Fri Jun 17 11:34:23 2022
+# Load=59/8192=1%, Rehash=0, Collisions=1/106=1%
+# Finished Make data base on Fri Jun 17 16:20:13 2022
 
  
