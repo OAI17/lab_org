@@ -229,3 +229,86 @@ cardumen :
 	bl fish
 
 	br x27
+
+make_moon :
+
+	mov x29, x30 // guardo la direccion de retorno
+
+	mov x28, x12 // guardo la pos de la esquina superior izquierda
+
+
+
+	movz x15, 0xFFE7 , lsl 16	//	
+	movk x15, 0xE8D8, lsl 0
+	movz x16, 0x000, lsl 0
+
+	mov x2 , 50    // radio de la luna
+
+// first crater
+
+	bl make_circle		// hace el circulo principarl 
+
+	movz x15, 0xFFC8 , lsl 16	//	color de los crateres
+	movk x15, 0xC9B5, lsl 0
+
+	mov x2 , 15    	// radio del crater
+
+	mov x12,x28 	// vuelvo a guardar en x12 la posicion original
+
+	add x12,x12,100 // desplazo hacia la dercha la esquina sup del circulo
+
+
+	mov x10, 640		//
+	mov x11, 10			// desplazamiento en el eje Y de 
+	mul x10, x10,x11	//	
+	lsl x10,x10, 2		//
+
+	add x12,x12,x10
+
+	bl make_circle
+
+// second crater
+
+	movz x15, 0xFFC8 , lsl 16	//	color de los crateres
+	movk x15, 0xC9B5, lsl 0
+
+	mov x2 , 10    	// radio del crater
+
+	mov x12,x28 	// vuelvo a guardar en x12 la posicion original
+
+	add x12,x12,160 // desplazo hacia la dercha la esquina sup del circulo
+
+
+	mov x10, 640		//
+	mov x11, 10			// desplazamiento en el eje Y de 
+	mul x10, x10,x11	//	
+	lsl x10,x10, 2		//
+
+	add x12,x12,x10
+
+	bl make_circle
+
+// third crater
+
+	movz x15, 0xFFC8 , lsl 16	//	color de los crateres
+	movk x15, 0xC9B5, lsl 0
+
+	mov x2 , 10    	// radio del crater
+
+	mov x12,x28 	// vuelvo a guardar en x12 la posicion original
+
+	add x12,x12,220 // desplazo hacia la dercha la esquina sup del circulo
+
+
+	mov x10, 640		//
+	mov x11, 60			// desplazamiento en el eje Y de 
+	mul x10, x10,x11	//	
+	lsl x10,x10, 2		//
+
+	add x12,x12,x10
+
+	bl make_circle
+
+
+
+br x29

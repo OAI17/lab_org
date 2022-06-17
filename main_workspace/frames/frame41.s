@@ -76,7 +76,7 @@ frame41:
 	movz x12, 60		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 456	// cordenada X de 
+	add x12, x12, 460	// cordenada X de 
     lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 

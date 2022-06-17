@@ -60,6 +60,36 @@
 .include "frames/frame54.s"
 .include "frames/frame55.s"
 .include "frames/frame56.s"
+.include "frames/frame57.s"
+.include "frames/frame58.s"
+.include "frames/frame59.s"
+.include "frames/frame60.s"
+.include "frames/frame61.s"
+.include "frames/frame62.s"
+.include "frames/frame63.s"
+.include "frames/frame64.s"
+.include "frames/frame65.s"
+.include "frames/frame66.s"
+.include "frames/frame67.s"
+.include "frames/frame68.s"
+.include "frames/frame69.s"
+.include "frames/frame70.s"
+.include "frames/frame71.s"
+.include "frames/frame72.s"
+.include "frames/frame73.s"
+.include "frames/frame74.s"
+.include "frames/frame75.s"
+.include "frames/frame76.s"
+.include "frames/frame77.s"
+.include "frames/frame78.s"
+.include "frames/frame79.s"
+.include "frames/frame80.s"
+.include "frames/frame81.s"
+.include "frames/frame82.s"
+.include "frames/frame83.s"
+.include "frames/frame84.s"
+.include "frames/frame85.s"
+
 
 .include "delay.s"
 .equ SCREEN_WIDTH, 		640
@@ -244,6 +274,94 @@ bl delay0
 bl frame56
 bl delay0
 
+bl frame57
+bl delay0
+
+bl frame58
+bl delay0
+
+bl frame59
+bl delay0
+
+bl frame60
+bl delay0
+
+bl frame61
+bl delay0
+
+bl frame62
+bl delay0
+
+bl frame63
+bl delay0
+
+bl frame64
+bl delay0
+
+
+bl frame65
+bl delay0
+
+bl frame66
+bl delay0
+
+bl frame67
+bl delay0
+
+bl frame68
+bl delay0
+
+bl frame69
+bl delay0
+
+bl frame70
+bl delay0
+
+bl frame71
+bl delay0
+
+bl frame72
+bl delay0
+
+bl frame73
+bl delay0
+
+bl frame74
+bl delay0
+
+bl frame75
+bl delay0
+
+bl frame76
+bl delay0
+
+
+bl frame77
+bl delay0
+
+bl frame78
+bl delay0
+
+bl frame79
+bl delay0
+
+bl frame80
+bl delay0
+
+bl frame81
+bl delay0
+
+bl frame82
+bl delay0
+
+bl frame83
+bl delay0
+
+bl frame84
+bl delay0
+
+bl frame85
+bl delay0
 
 
 //---------------------------------------------------------------

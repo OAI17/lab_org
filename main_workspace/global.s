@@ -10,7 +10,7 @@
 .globl make_iceberg
 .globl cardumen
 .globl delay0
-
+.globl make_moon
 
 
 .equ SCREEN_WIDTH, 		640

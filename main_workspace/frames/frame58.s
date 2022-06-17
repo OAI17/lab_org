@@ -1,6 +1,6 @@
 
 .include "global.s"
-frame37:
+frame58:
     mov x1,x30
 	//Fondo
 	movz x10, BASE_COLOR, lsl 16
@@ -11,15 +11,15 @@ frame37:
 	mov x12, 2 // Contador para mitad de la imagen
 	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
 
-    mov x8, 150		//radio olas
+    mov x8, 150 	//radio olas
 
 	bl fondo
 
 	//Sol
-	movz x12, 52		// cordenada Y 
+	movz x12, 76		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del circulo
-	add x12, x12, 216	// cordenada X de 
+	add x12, x12, 310	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -57,7 +57,7 @@ frame37:
 	movz x12, 40		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 240	// cordenada X de 
+	add x12, x12, 324	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -66,7 +66,7 @@ frame37:
 	movz x12, 120		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 342	// cordenada X de 
+	add x12, x12, 426	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -76,7 +76,7 @@ frame37:
 	movz x12, 60		// cordenada Y 
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
-	add x12, x12, 456	// cordenada X de 
+	add x12, x12, 524	// cordenada X de 
     lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -87,10 +87,10 @@ frame37:
 	movk x15, 0x522D , lsl 0	//
 	
 
-	movz x12, 260		// cordenada Y de 160 hasta 420
+	movz x12, 260	// cordenada Y de 160 hasta 420
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 212	// cordenada X de 
+	add x12, x12, 246	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -110,7 +110,7 @@ frame37:
 	movz x12, 300		// cordenada Y de 160 hasta 420
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 160	// cordenada X de 
+	add x12, x12, 178	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
@@ -129,7 +129,7 @@ frame37:
 	movz x12, 380		// cordenada Y de 160 hasta 420
 	movz x13, 640		// 
 	mul x12, x12, x13	// calcula el centro del barco
-	add x12, x12, 196	// cordenada X de 
+	add x12, x12, 244	// cordenada X de 
 	lsl x12, x12, 2		//
 	add x12,x20,x12     // 
 
