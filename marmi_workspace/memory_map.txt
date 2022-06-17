@@ -17,7 +17,7 @@ LOAD letters.o
 LOAD background.o
                 0x0000000000080000                . = 0x80000
 
-.text           0x0000000000080000    0x910d0
+.text           0x0000000000080000    0x90eac
  *(.text.boot)
  .text.boot     0x0000000000080000    0x100c8 start.o
                 0x0000000000080000                _start
@@ -28,71 +28,72 @@ LOAD background.o
  .text          0x0000000000090180      0x250 boat.o
  .text          0x00000000000903d0      0x1c0 sun.o
  .text          0x0000000000090590    0x80000 start.o
- .text          0x0000000000110590      0x92c app.o
+ .text          0x0000000000110590      0x718 app.o
                 0x000000000011059c                make_boat
                 0x00000000001107e0                fondo
-                0x000000000011088c                rand
-                0x00000000001108f0                make_sun
-                0x000000000011096c                make_cloud
-                0x0000000000110a00                fish
-                0x0000000000110ab0                make_mountain
-                0x0000000000110c10                make_iceberg
-                0x0000000000110c6c                main
- .text          0x0000000000110ebc      0x104 letters.o
- .text          0x0000000000110fc0      0x110 background.o
+                0x0000000000110888                rand
+                0x00000000001108e0                make_sun
+                0x000000000011095c                make_cloud
+                0x00000000001109f0                fish
+                0x0000000000110aa0                make_mountain
+                0x0000000000110c00                make_iceberg
+                0x0000000000110c5c                main
+ .text          0x0000000000110ca8      0x104 letters.o
+ .text          0x0000000000110dac      0x100 background.o
 
-.iplt           0x00000000001110d0        0x0
- .iplt          0x00000000001110d0        0x0 start.o
+.iplt           0x0000000000110eac        0x0
+ .iplt          0x0000000000110eac        0x0 start.o
 
-.rela.dyn       0x00000000001110d0        0x0
- .rela.iplt     0x00000000001110d0        0x0 start.o
+.rela.dyn       0x0000000000110eb0        0x0
+ .rela.iplt     0x0000000000110eb0        0x0 start.o
  .rela.text.boot
-                0x00000000001110d0        0x0 start.o
+                0x0000000000110eb0        0x0 start.o
 
-.data           0x00000000001110d0        0x0
- .data          0x00000000001110d0        0x0 iceberg.o
- .data          0x00000000001110d0        0x0 global.o
- .data          0x00000000001110d0        0x0 mountain.o
- .data          0x00000000001110d0        0x0 boat.o
- .data          0x00000000001110d0        0x0 sun.o
- .data          0x00000000001110d0        0x0 start.o
- .data          0x00000000001110d0        0x0 app.o
- .data          0x00000000001110d0        0x0 letters.o
- .data          0x00000000001110d0        0x0 background.o
+.data           0x0000000000110eac        0x0
+ .data          0x0000000000110eac        0x0 iceberg.o
+ .data          0x0000000000110eac        0x0 global.o
+ .data          0x0000000000110eac        0x0 mountain.o
+ .data          0x0000000000110eac        0x0 boat.o
+ .data          0x0000000000110eac        0x0 sun.o
+ .data          0x0000000000110eac        0x0 start.o
+ .data          0x0000000000110eac        0x0 app.o
+ .data          0x0000000000110eac        0x0 letters.o
+ .data          0x0000000000110eac        0x0 background.o
 
-.igot.plt       0x00000000001110d0        0x0
- .igot.plt      0x00000000001110d0        0x0 start.o
+.igot.plt       0x0000000000110eb0        0x0
+ .igot.plt      0x0000000000110eb0        0x0 start.o
 
-.bss            0x00000000001110d0        0x0
+.bss            0x0000000000110eac        0x4
  *(.bss*)
- .bss           0x00000000001110d0        0x0 iceberg.o
- .bss           0x00000000001110d0        0x0 global.o
- .bss           0x00000000001110d0        0x0 mountain.o
- .bss           0x00000000001110d0        0x0 boat.o
- .bss           0x00000000001110d0        0x0 sun.o
- .bss           0x00000000001110d0        0x0 start.o
- .bss           0x00000000001110d0        0x0 app.o
- .bss           0x00000000001110d0        0x0 letters.o
- .bss           0x00000000001110d0        0x0 background.o
-                0x00000000001110d0                . = ALIGN (0x10)
-                0x00000000001110d0                __bss_start = .
+ .bss           0x0000000000110eac        0x0 iceberg.o
+ .bss           0x0000000000110eac        0x0 global.o
+ .bss           0x0000000000110eac        0x0 mountain.o
+ .bss           0x0000000000110eac        0x0 boat.o
+ .bss           0x0000000000110eac        0x0 sun.o
+ .bss           0x0000000000110eac        0x0 start.o
+ .bss           0x0000000000110eac        0x0 app.o
+ .bss           0x0000000000110eac        0x0 letters.o
+ .bss           0x0000000000110eac        0x0 background.o
+                0x0000000000110eb0                . = ALIGN (0x10)
+ *fill*         0x0000000000110eac        0x4 
+                0x0000000000110eb0                __bss_start = .
  *(.bss .bss.*)
  *(COMMON)
-                0x00000000001110d0                __bss_end = .
-                0x00000000001110d0                _end = .
+                0x0000000000110eb0                __bss_end = .
+                0x0000000000110eb0                _end = .
                 0x0000000000000000                __bss_size = ((__bss_end - __bss_start) >> 0x3)
 OUTPUT(kernel8.elf elf64-littleaarch64)
 LOAD linker stubs
 
-.debug_line     0x0000000000000000      0x651
+.debug_line     0x0000000000000000      0x5c8
  .debug_line    0x0000000000000000       0x51 iceberg.o
  .debug_line    0x0000000000000051       0x52 mountain.o
  .debug_line    0x00000000000000a3       0xcd boat.o
  .debug_line    0x0000000000000170       0xa6 sun.o
  .debug_line    0x0000000000000216       0x53 start.o
- .debug_line    0x0000000000000269      0x2ea app.o
- .debug_line    0x0000000000000553       0x7b letters.o
- .debug_line    0x00000000000005ce       0x83 background.o
+ .debug_line    0x0000000000000269      0x265 app.o
+ .debug_line    0x00000000000004ce       0x7b letters.o
+ .debug_line    0x0000000000000549       0x7f background.o
 
 .debug_info     0x0000000000000000      0x170
  .debug_info    0x0000000000000000       0x2e iceberg.o
@@ -132,18 +133,18 @@ LOAD linker stubs
  .debug_aranges
                 0x0000000000000150       0x30 background.o
 
-.debug_str      0x0000000000000000       0x76
- .debug_str     0x0000000000000000       0x3f iceberg.o
- .debug_str     0x000000000000003f        0xb mountain.o
-                                         0x40 (size before relaxing)
- .debug_str     0x000000000000004a        0x7 boat.o
-                                         0x3c (size before relaxing)
- .debug_str     0x0000000000000051        0x6 sun.o
-                                         0x3b (size before relaxing)
- .debug_str     0x0000000000000057        0x8 start.o
+.debug_str      0x0000000000000000       0x77
+ .debug_str     0x0000000000000000       0x40 iceberg.o
+ .debug_str     0x0000000000000040        0xb mountain.o
+                                         0x41 (size before relaxing)
+ .debug_str     0x000000000000004b        0x7 boat.o
                                          0x3d (size before relaxing)
- .debug_str     0x000000000000005f       0x3c app.o
- .debug_str     0x000000000000005f        0xa letters.o
-                                         0x3f (size before relaxing)
- .debug_str     0x0000000000000069        0xd background.o
-                                         0x42 (size before relaxing)
+ .debug_str     0x0000000000000052        0x6 sun.o
+                                         0x3c (size before relaxing)
+ .debug_str     0x0000000000000058        0x8 start.o
+                                         0x3e (size before relaxing)
+ .debug_str     0x0000000000000060       0x3d app.o
+ .debug_str     0x0000000000000060        0xa letters.o
+                                         0x40 (size before relaxing)
+ .debug_str     0x000000000000006a        0xd background.o
+                                         0x43 (size before relaxing)

@@ -25,7 +25,6 @@ mov x27, x30
 loop1:
 	mov x1, SCREEN_WIDTH         // X Size
 
-
 loop0:
 	stur w10,[x0]	   // Set color of pixel N
 	add x0,x0,4	   // Next pixel
@@ -46,10 +45,6 @@ loop0:
 	cbnz x2,loop1	   // if not last row, jump
 	/*Termina de pintar el cielo*/
 	
-	cbz x29, skp //Veo si es de dia o noche
-	//movz x10, 0xffff, lsl 0 
-	//bl rand
-	
 	skp:
 	sub x12, x12, 1 // Primera mitad pintada 
 	cmp x12, 1 
@@ -60,7 +55,6 @@ loop0:
 	movz x10, BASE_COLOR, lsl 16 // Seteo color del mar
 	movk x10, SEA_COLOR_l, lsl 00 // Seteo color del mar
 	b loop1
-
 
 sea_effects:
 	// Dir base del Circulo
@@ -94,40 +88,39 @@ sea_effects:
 br x27
 
 //Estrellas
+
+
 rand:
+    mov x3, x2
+    lsr x3, x3, 56 //random y
 
-    movz x21, 0xbbc1, lsl 0
-    movk x21, 0xabcd, lsl 16
-    movk x21, 0xd200, lsl 32
-    movk x21, 0xfff7, lsl 48
-
-    mov x23, 30
-
-    mov x24, x21
-    lsr x24, x24, 47 //random y
-    mov x25, x21
-    lsr x25, x25, 39 ////random x
+    mov x4, x2
+    lsr x4, x4, 51 ////random x
 
     //calc coord
 
-    mov x26, 640
-    mul x24, x26, x24
-    add x24, x24, x25
-    lsl x24, x24, 2
-    add x28, x24, x20
-    lsl x5, x21, 3
-    eor x21, x21, x5
+    mov x11, 640
+    mul x3, x11, x3
+    add x3, x3, x4
+    lsl x3, x3, 2
+    add x0, x3, x20
 
-    str w10, [x28]
-    add x28, x28, 2560
-    str w10, [x28]
-    sub x28, x28 ,4
-    str w10, [x28]
-    add x28, x28, 8
-    str w10, [x28]
-    sub x28, x28, 4
+    lsl x5, x2, 3
+    eor x2, x2, x5
 
-br x30
+    str w26, [x0]
+    add x0, x0, 2560
+    str w26, [x0]
+    sub x0, x0 ,4
+    str w26, [x0]
+    add x0, x0, 8
+    str w26, [x0]
+    sub x0, x0, 4
+
+	subs x1, x1, 1
+	cbnz x1, rand
+	br x30
+
 
 //fin de hacer el fondo
 
