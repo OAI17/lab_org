@@ -1,24 +1,22 @@
+.include "boat.s"
+.include "background.s"
+.include "sun.s"
+.include "mountain.s"
+.include "letters.s"
+.include "iceberg.s"
+.include "global.s"
 
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
-.equ BITS_PER_PIXEL,  	32
-
-
-.equ HALF_SCREEN_HEIGH, 240 // Dimencion Cielo
-.equ SKYE_COLOR_I, 0x88FF // Color inical del cielo
-.equ INCREMENT_COLOR, 0x80000 // Incremento para degrades
-.equ Q_LINE, 10 // Cantidad de lineas del mismo color
-
-.equ BASE_COLOR, 0xFF00 // Color base
-.equ SEA_COLOR_l, 0x00FF // Color mar
-
-.globl main
 
 main:
+
 	// X0 contiene la direccion base del framebuffer
  	mov x20, x0	// Save framebuffer base address to x20	
 	//---------------- CODE HERE ------------------------------------
-	
+
+
+	//Fondo
 	movz x10, BASE_COLOR, lsl 16
 	movk x10, SKYE_COLOR_I, lsl 00
 
@@ -27,42 +25,218 @@ main:
 	mov x12, 2 // Contador para mitad de la imagen
 	mov x2, HALF_SCREEN_HEIGH         // Y Size cielo
 
-loop1:
-	mov x1, SCREEN_WIDTH         // X Size
-
-
-loop0:
-	stur w10,[x0]	   // Set color of pixel N
-	add x0,x0,4	   // Next pixel
-	sub x1,x1,1	   // decrement X counter
-	cbnz x1,loop0	   // If not end row jump
-
-	/*Degrades*/
-	cmp x12,2
-	b.ne decrement_y
-	cbnz x11, decrement_y // Compara si termino de pintar el bloque del mismo color
-	sub x11,x11,1 
-	add x9, x10, INCREMENT_COLOR // Calcular nuevo color
-	mov x10, x9 // Seteo de nuevo color
-	mov x11,Q_LINE // Reinicio de contador de renglones
-
-	decrement_y:
-	sub x2,x2,1	   // Decrement Y counter
-	cbnz x2,loop1	   // if not last row, jump
-	/*Termina de pintar el cielo*/
+	mov x29, 0 // Variable dia=0/noche=1
+	bl fondo
 	
-	sub x12, x12, 1 // Primera mitad pintada 
-	cmp x12, 1 
-	b.ne InfLoop
 
-	mov x2, HALF_SCREEN_HEIGH // Pinte segunda mitad
+	//Sol
+	movz x12, 30		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del circulo
+	add x12, x12, 460	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_sun
+
+	//Primera montaNa
+	movz x12, 150		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 550	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 90			// Altura montaNa
+	movz x14, 0xFF87 , lsl 16	// color de las montaNas
+	movk x14, 0xCEFA , lsl 0	//
+
+	bl make_mountain
+
+	//Segunda montaNa	
+	movz x12, 100		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 500	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 140			// Altura montaNa
+
+	movz x14, 0x0 , lsl 16	// color de las montaNas
+	movk x14, 0xBBFF , lsl 0	//
+
+	bl make_mountain
+
+
+	//Nuve1
+	movz x12, 40		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 100	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+	//Nuve2
+	movz x12, 120		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 200	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+	//Nuve3
+	movz x12, 60		// cordenada Y 
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula la "esquina" izquierda del barco
+	add x12, x12, 320	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	bl make_cloud
+
+	//Primer barco
+	movz x15, 0xFFA0 , lsl 16	// color de la base del barco
+	movk x15, 0x522D , lsl 0	//
 	
-	movz x10, BASE_COLOR, lsl 16 // Seteo color del mar
-	movk x10, SEA_COLOR_l, lsl 00 // Seteo color del mar
-	b loop1
+
+	movz x12, 260		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 440	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0xFFFF , lsl 16		//color de las velas
+	movk x14, 0x0 , lsl 0	//
+
+
+	bl make_boat
+
+
+	//Iceberg	
+	movz x12, 200		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 520	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+	mov x2, 180			// Altura montaNa
+	movz x14, 0xFFAF, lsl 16	// color de las montaNas
+	movk x14, 0xEEEE , lsl 0	//
+
+	bl make_iceberg
+
+
+
+
+
+
+	//Segundo barco
+	movz x15, 0xFFCD , lsl 16	// color de la base del barco
+	movk x15, 0x853F , lsl 0	//
+	
+	movz x12, 300		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 200	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0xFF , lsl 16		//color de las velas
+	movk x14, 0xFFFF , lsl 0	//
+	
+	bl make_boat
+
+	
+	//Tercer barco
+	movz x15, 0xFF8B , lsl 16	// color de la base del barco
+	movk x15, 0x4513 , lsl 0	//	
+
+	movz x12, 380		// cordenada Y de 160 hasta 420
+	movz x13, 640		// 
+	mul x12, x12, x13	// calcula el centro del barco
+	add x12, x12, 460	// cordenada X de 
+	lsl x12, x12, 2		//
+	add x12,x20,x12     // 
+
+	movz x14, 0x0 , lsl 16	// color de las velas
+	movk x14, 0x0 , lsl 0	//
+	
+	bl make_boat
+
+// Pescado pintado
+
+	mov x3, 50 // Posicion X
+	mov x4, 400 // Posicion Y
+	mov x5, 640
+	mul x4, x4, x5
+	add x3, x3, x4
+	lsl x3, x3, 2
+	add x3, x20, x3
+
+	movz x6, 0xff20, lsl 16
+	movk x6, 0xb2aa, lsl 00
+
+	bl fish
+
+
+	mov x3, 30 // Posicion X
+	mov x4, 380 // Posicion Y
+	mov x5, 640
+	mul x4, x4, x5
+	add x3, x3, x4
+	lsl x3, x3, 2
+	add x3, x20, x3
+
+	movz x6, 0xff20, lsl 16
+	movk x6, 0xb2aa, lsl 00
+
+	bl fish
+
+	movz x3, 195	// y				
+    movz x4, 640
+    mul x3, x3, x4
+    add x3, x3,370	// x
+    lsl x3, x3, 2
+    add x3,x20,x3
+
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color 
+
+	bl make_I
+
+	movz x3, 210				
+	movz x4, 640
+	mul x3, x3, x4
+	add x3, x3, 320
+	lsl x3, x3, 2
+	add x3,x20,x3	// Lo mandé a el centro de la pantalla, pero se puede incializar en cualquir lado
+	
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color 
+
+	bl make_H
+
+
+	movz x3, 195	// y				
+    movz x4, 640
+    mul x3, x3, x4
+    add x3, x3, 290	// x
+    lsl x3, x3, 2
+    add x3,x20,x3
+
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color 
+
+
+	bl make_T
+
 
 //---------------------------------------------------------------
 // Infinite Loop 
+
 InfLoop: 
 	b InfLoop
 

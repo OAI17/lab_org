@@ -29,8 +29,8 @@ loop0:
 	cbnz x1,loop0	   // If not end row jump
 	sub x2,x2,1	   // Decrement Y counter
 	cbnz x2,loop1	   // if not last row, jump
-	
-	bl triang	
+
+	bl cuad
 	//---------------------------------------------------------------
 	// Infinite Loop 
 	b InfLoop
@@ -46,7 +46,7 @@ for:
 	b back
 
 cuad:
-	movz x12, 210
+	movz x12, 210				// calcula la esquina sup derecha del cuadrado
 	movz x13, 640
 	mul x12, x12, x13
 	add x12, x12, 320
