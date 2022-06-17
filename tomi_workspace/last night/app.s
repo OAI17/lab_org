@@ -6,6 +6,9 @@
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480
 .globl main
+.globl make_H
+.globl make_I
+.globl make_T
 
 main:
 
@@ -107,6 +110,7 @@ main:
 	movz x14, 0xFFFF , lsl 16		//color de las velas
 	movk x14, 0x0 , lsl 0	//
 
+	mov x11, 2
 
 	bl make_boat
 
@@ -124,6 +128,8 @@ main:
 	movz x14, 0xFF , lsl 16		//color de las velas
 	movk x14, 0xFFFF , lsl 0	//
 	
+	mov x11, 3
+
 	bl make_boat
 
 	
@@ -140,7 +146,9 @@ main:
 
 	movz x14, 0x0 , lsl 16	// color de las velas
 	movk x14, 0x0 , lsl 0	//
-	
+
+	mov x11, 1
+
 	bl make_boat
 
 // Pescado pintado
@@ -171,45 +179,6 @@ main:
 	movk x6, 0xb2aa, lsl 00
 
 	bl fish
-
-	movz x3, 195	// y				
-    movz x4, 640
-    mul x3, x3, x4
-    add x3, x3,370	// x
-    lsl x3, x3, 2
-    add x3,x20,x3
-
-	movz x6, 0xffff, lsl 16
-    movk x6, 0xffff, lsl 00 // Color 
-
-	bl make_I
-
-	movz x3, 210				
-	movz x4, 640
-	mul x3, x3, x4
-	add x3, x3, 320
-	lsl x3, x3, 2
-	add x3,x20,x3	// Lo mandé a el centro de la pantalla, pero se puede incializar en cualquir lado
-	
-	movz x6, 0xffff, lsl 16
-    movk x6, 0xffff, lsl 00 // Color 
-
-	bl make_H
-
-
-	movz x3, 195	// y				
-    movz x4, 640
-    mul x3, x3, x4
-    add x3, x3, 290	// x
-    lsl x3, x3, 2
-    add x3,x20,x3
-
-	movz x6, 0xffff, lsl 16
-    movk x6, 0xffff, lsl 00 // Color 
-
-
-	bl make_T
-
 
 //---------------------------------------------------------------
 // Infinite Loop 

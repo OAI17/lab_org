@@ -30,24 +30,94 @@ delay:
 // hacer el barco principio
 make_boat:
 
+	mov x25, x30
 
-	b base							//hacer base del barco
-	endbase:
+	mov x10,x12  // guardo la cordenada del centro del barco
 
+	bl base							//hacer base del barco
 
 	sub x13, x12, 240
 	mov x29, 120           // altura mastil
 	mov x28, 60				// "mitad" altura vela
-	b velaM						//hacer la vela
-end_vela1:
+	bl velaM						//hacer la vela
+
 
 	add x13, x12, 200
 	mov x29, 100           		// altura mastil
 	mov x28, 50					// "mitad" altura vela
-	b velasec						//hacer la vela
-end_vela2:
+	bl velasec						//hacer la vela
 
-	br x30
+	mov x3 , x10		// cargo el centro del barco
+
+
+	cmp x11, 1
+
+	beq l_H
+
+
+	cmp x11, 2
+
+	beq l_I
+
+
+	cmp x11, 3
+
+	beq l_T
+
+	l_H:
+
+	sub x3 ,x3, 160		// desplazo hacia la izquierda
+
+	mov x10, 2560		// 
+	lsl x10, x10,6		//	
+	sub x3,x3,x10		//
+
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color de la H 
+
+	bl make_H
+
+	b skip
+
+	l_I:
+	
+
+	sub x3 ,x3, 120		// desplazo hacia la izquierda
+
+	mov x10, 2560		//
+	mov x14, 80
+	mul x10,x10,x14		//	
+	sub x3,x3,x10		//
+
+	movz x6, 0xffff, lsl 16
+    movk x6, 0xffff, lsl 00 // Color de la I
+
+	bl make_I
+
+	b skip
+
+	l_T: 
+
+	sub x3 ,x3, 120		// desplazo hacia la izquierda
+
+	mov x10, 2560		//
+	mov x14, 80
+	mul x10,x10,x14		//	
+	sub x3,x3,x10		//
+
+
+	movz x6, 0x0, lsl 16
+    movk x6, 0x0, lsl 00 // Color  de la T
+
+	bl make_T
+
+	b skip
+
+	skip :
+
+	br x25
+
+// fin funcion base
 
 base : 
 	mov x4, x12	  		//centro del barco
@@ -111,7 +181,7 @@ base :
 		subs xzr,x5,x7
 		bne lineas2
 
-	b endbase
+	br x30
 
 
 velaM: 
@@ -167,7 +237,7 @@ aux_3:
 	cbnz x22,bucle2 
 	
 	
-	b end_vela1
+	br x30
 
 
 mastil:
@@ -249,7 +319,7 @@ aux_4:
 	cbnz x22,loopV2 
 	
 	
-	b end_vela2
+	br x30
 
 
 mastil2:
@@ -276,6 +346,7 @@ mastil2:
 	add x7,x7,4
 
 	b back2		// al final x7 debe guardar la esquina sup derecha +1 bit
+
 br x30
 // fin del barco
 
