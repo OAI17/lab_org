@@ -11,7 +11,7 @@
 .globl cardumen
 .globl delay0
 .globl make_moon
-
+.globl bs
 
 .equ SCREEN_WIDTH, 		640
 .equ SCREEN_HEIGH, 		480

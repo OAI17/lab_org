@@ -2,9 +2,10 @@
 .include "global.s"
 frame112:
     mov x1,x30
+///////////////////////////////////////////
 	//Fondo
-	movz x10, BASE_COLOR, lsl 16
-	movk x10, SKYE_COLOR_I, lsl 00
+	movz x10, 0xFF48, lsl 16
+	movk x10, 0x3D8B, lsl 00
 
 	mov x11, Q_LINE // Cantidad de renglones con el mismo color
 	mov x9, SKYE_COLOR_I // Seteo variable de color
@@ -14,6 +15,19 @@ frame112:
     mov x8, 150 	//radio olas
 
 	bl fondo
+
+	//Estrellas
+    movz x2, 0xb0ca, lsl 0
+    movk x2, 0xb0ca, lsl 16
+    movk x2, 0xd5ad, lsl 32
+    movk x2, 0xbeef, lsl 48
+
+	movz x26, 0xD700, lsl 0 //color estrellas
+    movk x26, 0xFFFF, lsl 16 //color estrellas
+	mov x13, 350 //contador de estrellas cambiar x1 
+		
+	bl rand
+///////////////////////////////////////////
 
 	//luna
 	
